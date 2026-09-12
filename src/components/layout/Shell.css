@@ -5,13 +5,10 @@
   flex-direction: column;
   min-width: 0;
   border-radius: var(--frame-radius);
-  border: 1px solid var(--frame-border);
   background: var(--bg);
   overflow-x: hidden;
   overflow-y: auto;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.6),
-    0 30px 80px -20px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85);
 
   /* scrollbar stays functional, just not drawn over the rounded frame */
   scrollbar-width: none;

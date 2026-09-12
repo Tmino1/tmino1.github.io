@@ -38,7 +38,6 @@
   /* --- screen frame: the black "desktop" gap + rounded bordered screen --- */
   --frame-gap: 16px;
   --frame-radius: 24px;
-  --frame-border: #303a40; /* muted slate-blue outline, no green cast */
 
   /* --- spacing scale --- */
   --space-1: 4px;
