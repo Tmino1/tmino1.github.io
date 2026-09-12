@@ -3,6 +3,8 @@ import Panel from '../components/ui/Panel'
 import Badge from '../components/ui/Badge'
 import './Home.css'
 
+const SHAPES = ['a', 'b', 'c', 'd']
+
 export default function Home() {
   return (
     <div className="home">
@@ -24,8 +26,8 @@ export default function Home() {
       <section>
         <h2>Skills</h2>
         <div className="skills-grid">
-          {skills.map(({ group, items }) => (
-            <Panel key={group} hoverable>
+          {skills.map(({ group, items }, i) => (
+            <Panel key={group} hoverable shape={SHAPES[i % SHAPES.length]}>
               <h3>{group}</h3>
               <div className="skill-badges">
                 {items.map(({ name, level }) => (

@@ -9,13 +9,20 @@ function formatDate(value) {
   return date.toLocaleDateString(undefined, { month: 'short', year: 'numeric' })
 }
 
+const SHAPES = ['a', 'b', 'c', 'd']
+
 export default function Experience() {
   return (
     <div className="experience">
       <h1>Experience</h1>
       <div className="timeline">
-        {experience.map(({ role, org, location, start, end, bullets }) => (
-          <Panel key={`${role}-${org}`} hoverable className="timeline-item">
+        {experience.map(({ role, org, location, start, end, bullets }, i) => (
+          <Panel
+            key={`${role}-${org}`}
+            hoverable
+            shape={SHAPES[i % SHAPES.length]}
+            className="timeline-item"
+          >
             <div className="timeline-header">
               <h2>{role}</h2>
               <span className="timeline-dates">

@@ -4,13 +4,21 @@ import Badge from '../components/ui/Badge'
 import Icon from '../components/ui/Icon'
 import './Projects.css'
 
+const SHAPES = ['a', 'b', 'c', 'd']
+
 export default function Projects() {
   return (
     <div className="projects">
       <h1>Projects</h1>
       <div className="projects-grid">
-        {projects.map(({ slug, name, description, tags, image, links, featured }) => (
-          <Panel key={slug} hoverable featured={featured} className="project-card">
+        {projects.map(({ slug, name, description, tags, image, links, featured }, i) => (
+          <Panel
+            key={slug}
+            hoverable
+            featured={featured}
+            shape={SHAPES[i % SHAPES.length]}
+            className="project-card"
+          >
             <img className="project-image" src={image} alt="" loading="lazy" />
             <h2>{name}</h2>
             <p>{description}</p>

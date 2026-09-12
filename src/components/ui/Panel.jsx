@@ -4,6 +4,7 @@ export default function Panel({
   as: Tag = 'div',
   hoverable = false,
   featured = false,
+  shape,
   className = '',
   children,
   ...rest
@@ -12,6 +13,7 @@ export default function Panel({
     'panel',
     hoverable && 'panel--hoverable',
     featured && 'panel--featured',
+    shape && `panel--shape-${shape}`,
     className,
   ]
     .filter(Boolean)
