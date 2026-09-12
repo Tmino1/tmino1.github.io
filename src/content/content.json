@@ -1,0 +1,85 @@
+{
+  "site": {
+    "name": "Travis Minor",
+    "title": "Travis Minor — Roboticist",
+    "tagline": "I build fast, well-crafted robotics software.",
+    "email": "travisminor10@gmail.com",
+    "location": "United States"
+  },
+  "about": {
+    "heading": "About",
+    "summary": "I'm a roboticist who enjoys turning ideas into clean, working systems — from embedded control software to the interfaces built on top of them.",
+    "highlights": [
+      "Focused on readable, well-tested code",
+      "Comfortable across the full stack",
+      "Always shipping small side projects"
+    ]
+  },
+  "skills": [
+    {
+      "group": "Languages",
+      "items": [
+        { "name": "JavaScript", "level": "advanced" },
+        { "name": "TypeScript", "level": "advanced" },
+        { "name": "Python", "level": "intermediate" }
+      ]
+    },
+    {
+      "group": "Frameworks",
+      "items": [
+        { "name": "React", "level": "advanced" },
+        { "name": "Node.js", "level": "advanced" }
+      ]
+    },
+    {
+      "group": "Tools",
+      "items": [
+        { "name": "Git", "level": "advanced" },
+        { "name": "Docker", "level": "intermediate" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "project-one",
+      "name": "Project One",
+      "description": "A short, punchy description of what this project does and why it's interesting.",
+      "tags": ["React", "Vite", "Node.js"],
+      "image": "/projects/project-one.png",
+      "links": {
+        "live": "https://example.com",
+        "source": "https://github.com/tmino1/project-one"
+      },
+      "featured": true
+    },
+    {
+      "slug": "project-two",
+      "name": "Project Two",
+      "description": "Another project worth showing off — swap this copy for the real thing.",
+      "tags": ["Python"],
+      "image": "/projects/project-two.png",
+      "links": {
+        "source": "https://github.com/tmino1/project-two"
+      },
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer",
+      "org": "Company Name",
+      "location": "Remote",
+      "start": "2023-06",
+      "end": "Present",
+      "bullets": [
+        "Shipped feature X that improved metric Y by Z%",
+        "Led migration from A to B"
+      ]
+    }
+  ],
+  "contact": [
+    { "label": "Email", "url": "mailto:travisminor10@gmail.com", "icon": "mail" },
+    { "label": "GitHub", "url": "https://github.com/tmino1", "icon": "github" },
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/tmino1", "icon": "linkedin" }
+  ]
+}

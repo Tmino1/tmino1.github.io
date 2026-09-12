@@ -1,0 +1,52 @@
+.topbar {
+  position: sticky;
+  top: var(--space-4);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  background: rgba(20, 28, 25, 0.65);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: var(--panel-blur);
+  -webkit-backdrop-filter: var(--panel-blur);
+  box-shadow: var(--shadow);
+}
+
+.topbar-name {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.topbar-pill {
+  font-family: var(--mono);
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.topbar-pill:hover {
+  color: var(--text);
+  background: var(--bg-elevated-2);
+}
+
+.topbar-pill.is-active {
+  color: #08150f;
+  background: var(--accent);
+}

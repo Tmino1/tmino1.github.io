@@ -1,0 +1,34 @@
+.shell {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  overflow-x: clip;
+}
+
+.shell-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+    ellipse at top,
+    rgba(143, 214, 174, 0.05),
+    transparent 60%
+  );
+}
+
+.shell-content {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.shell-main {
+  flex: 1;
+  padding-block: var(--space-6) var(--space-8);
+}
