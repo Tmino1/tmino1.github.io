@@ -12,6 +12,14 @@
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.6),
     0 30px 80px -20px rgba(0, 0, 0, 0.85);
+
+  /* scrollbar stays functional, just not drawn over the rounded frame */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.shell::-webkit-scrollbar {
+  display: none;
 }
 
 .shell-glow {
@@ -23,7 +31,7 @@
   z-index: 0;
   background-image: radial-gradient(
     ellipse at top,
-    rgba(143, 214, 174, 0.06),
+    rgba(138, 168, 189, 0.06),
     transparent 60%
   );
 }

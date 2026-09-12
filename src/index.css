@@ -5,29 +5,29 @@
 }
 
 :root {
-  /* --- surfaces --- */
-  --bg: #0c110f; /* deep greyish-green, near-black page background */
-  --bg-elevated: #141c19; /* panel/card surface, one step up */
-  --bg-elevated-2: #1b2521; /* nested / hovered surface */
+  /* --- surfaces: muted, slightly blue near-black --- */
+  --bg: #0b0f11; /* sampled from the user's own desktop colorscheme */
+  --bg-elevated: #141a1d; /* panel/card surface, one step up */
+  --bg-elevated-2: #1b2226; /* nested / hovered surface */
 
   /* --- text --- */
-  --text: #e9efeb;
-  --text-secondary: #aab5ae;
-  --text-muted: #6f7a74;
+  --text: #e7ebed;
+  --text-secondary: #a5afb4;
+  --text-muted: #6c7579;
 
-  /* --- accent: muted sage/mint --- */
-  --accent: #8fd6ae;
-  --accent-strong: #a9e4c2;
-  --accent-bg: rgba(143, 214, 174, 0.12);
-  --accent-border: rgba(143, 214, 174, 0.4);
+  /* --- accent: muted slate blue --- */
+  --accent: #8aa8bd;
+  --accent-strong: #a7c1d1;
+  --accent-bg: rgba(138, 168, 189, 0.12);
+  --accent-border: rgba(138, 168, 189, 0.4);
 
   /* --- borders / shadow --- */
-  --border: #26302b;
+  --border: #262e33;
   --border-soft: rgba(255, 255, 255, 0.06);
   --shadow:
     rgba(0, 0, 0, 0.45) 0 12px 28px -8px, rgba(0, 0, 0, 0.3) 0 4px 10px -4px;
   --glow-accent:
-    0 0 0 1px var(--accent-border), 0 0 24px -6px rgba(143, 214, 174, 0.35);
+    0 0 0 1px var(--accent-border), 0 0 24px -6px rgba(138, 168, 189, 0.35);
 
   /* --- radius scale (bento / pill language) --- */
   --radius-sm: 8px;
@@ -38,7 +38,7 @@
   /* --- screen frame: the black "desktop" gap + rounded bordered screen --- */
   --frame-gap: 16px;
   --frame-radius: 24px;
-  --frame-border: #333f38;
+  --frame-border: #303a40; /* muted slate-blue outline, no green cast */
 
   /* --- spacing scale --- */
   --space-1: 4px;
