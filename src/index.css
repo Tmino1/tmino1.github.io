@@ -71,6 +71,12 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+
+  /* on phones the frame stays proportionally smaller than on tablet/desktop */
+  @media (max-width: 600px) {
+    --frame-gap: 8px;
+    --frame-radius: 16px;
+  }
 }
 
 html,
