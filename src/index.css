@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   /* --- surfaces --- */
   --bg: #0c110f; /* deep greyish-green, near-black page background */
@@ -28,6 +34,11 @@
   --radius-md: 14px;
   --radius-lg: 22px;
   --radius-pill: 999px;
+
+  /* --- screen frame: the black "desktop" gap + rounded bordered screen --- */
+  --frame-gap: 16px;
+  --frame-radius: 24px;
+  --frame-border: #333f38;
 
   /* --- spacing scale --- */
   --space-1: 4px;
@@ -62,15 +73,18 @@
   }
 }
 
+html,
 body {
   margin: 0;
+  height: 100%;
+  background: #000; /* the "desktop" behind the framed screen */
 }
 
 #root {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  height: 100svh;
+  padding: var(--frame-gap);
   box-sizing: border-box;
+  display: flex;
 }
 
 h1,

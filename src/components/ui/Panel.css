@@ -4,6 +4,11 @@
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   padding: var(--space-5);
+
+  @media (max-width: 480px) {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+  }
 }
 
 .panel--hoverable {

@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
   margin-top: var(--space-5);
   padding: var(--space-2) var(--space-2) var(--space-2) var(--space-5);
   border-radius: var(--radius-pill);
@@ -14,6 +15,12 @@
   backdrop-filter: var(--panel-blur);
   -webkit-backdrop-filter: var(--panel-blur);
   box-shadow: var(--shadow);
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+  }
 }
 
 .topbar-name {
@@ -27,6 +34,12 @@
   display: flex;
   gap: var(--space-1);
   flex-wrap: wrap;
+  justify-content: flex-end;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .topbar-pill {
