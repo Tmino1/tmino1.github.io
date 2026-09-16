@@ -2,84 +2,133 @@
   "site": {
     "name": "Travis Minor",
     "title": "Travis Minor — Roboticist",
-    "tagline": "I build fast, well-crafted robotics software.",
+    "tagline": "I build autonomy and control software for real robots.",
     "email": "travisminor10@gmail.com",
-    "location": "United States"
+    "location": "Buffalo, NY"
   },
   "about": {
     "heading": "About",
-    "summary": "I'm a roboticist who enjoys turning ideas into clean, working systems — from embedded control software to the interfaces built on top of them.",
+    "summary": "I'm a Computer Science student at the University at Buffalo, minoring in Robotics and Math. I work on field robotics at DRONESLab and lead autonomy work on student rover teams. I care most about robot software that holds up outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
     "highlights": [
-      "Focused on readable, well-tested code",
-      "Comfortable across the full stack",
-      "Always shipping small side projects"
+      "B.S. Computer Science, Minor in Robotics and Math — University at Buffalo, expected Dec. 2026",
+      "Undergraduate researcher at DRONESLab, building open-source control software for Boston Dynamics Spot",
+      "Led autonomy for NASA LunaBotics and 15 engineers across 4 subteams at UB SpaceBulls"
     ]
   },
   "skills": [
     {
       "group": "Languages",
       "items": [
-        { "name": "JavaScript", "level": "advanced" },
-        { "name": "TypeScript", "level": "advanced" },
-        { "name": "Python", "level": "intermediate" }
+        { "name": "Python", "level": "advanced" },
+        { "name": "C++", "level": "intermediate" },
+        { "name": "C", "level": "intermediate" },
+        { "name": "Nix", "level": "intermediate" },
+        { "name": "Bash", "level": "intermediate" }
       ]
     },
     {
-      "group": "Frameworks",
+      "group": "Robotics",
       "items": [
-        { "name": "React", "level": "advanced" },
-        { "name": "Node.js", "level": "advanced" }
+        { "name": "ROS 2", "level": "advanced" },
+        { "name": "Nav2", "level": "advanced" },
+        { "name": "RTAB-Map", "level": "advanced" },
+        { "name": "micro-ROS", "level": "intermediate" }
       ]
     },
     {
-      "group": "Tools",
+      "group": "Simulation & CAD",
       "items": [
-        { "name": "Git", "level": "advanced" },
+        { "name": "Gazebo", "level": "intermediate" },
+        { "name": "Isaac Sim", "level": "beginner" },
+        { "name": "Fusion 360", "level": "intermediate" },
+        { "name": "OpenSCAD", "level": "intermediate" }
+      ]
+    },
+    {
+      "group": "Systems",
+      "items": [
+        { "name": "Linux (Ubuntu, NixOS)", "level": "advanced" },
         { "name": "Docker", "level": "intermediate" }
       ]
     }
   ],
   "projects": [
     {
-      "slug": "project-one",
-      "name": "Project One",
-      "description": "A short, punchy description of what this project does and why it's interesting.",
-      "tags": ["React", "Vite", "Node.js"],
-      "image": "/projects/project-one.png",
-      "links": {
-        "live": "https://example.com",
-        "source": "https://github.com/tmino1/project-one"
-      },
+      "slug": "open-spot-operator",
+      "name": "Open-Spot: Spot Operator",
+      "description": "The control-stack part of open-spot, DRONESLab's open-source alternative to ROS 2/Nav2 for Boston Dynamics Spot. It has two parts: a Godot 4 operator GUI that runs on a Steam Deck, and a Python control daemon on a Jetson Orin AGX. They talk over a custom UDP protocol with CRC-16 checks, and safety-critical commands are resent until acknowledged. Also includes a failsafe watchdog, e-stop paths isolated from the rest of the system, and plugins that run in separate processes so a crash can't take the robot down.",
+      "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
+      "links": {},
       "featured": true
     },
     {
-      "slug": "project-two",
-      "name": "Project Two",
-      "description": "Another project worth showing off — swap this copy for the real thing.",
-      "tags": ["Python"],
-      "image": "/projects/project-two.png",
-      "links": {
-        "source": "https://github.com/tmino1/project-two"
-      },
+      "slug": "vision-inspect",
+      "name": "VISION-Inspect",
+      "description": "An extension of DRONESLab's VISION infrastructure-inspection system for Spot. Instead of sampling at fixed waypoints, the robot decides when to capture based on LiDAR and a vision-language model (VLM), which makes inspection coverage more efficient. Includes a zero-shot transfer experiment: a 12B VLM is fine-tuned on general defect data while all culvert data is held out for testing.",
+      "tags": ["Python", "VLM", "LiDAR", "Nav2"],
+      "links": {},
+      "featured": false
+    },
+    {
+      "slug": "catan-agent",
+      "name": "Catan Agent",
+      "description": "A reinforcement learning agent for Settlers of Catan. A graph neural network encodes the board so the policy works across different board layouts. Training uses PPO, and opponent strength adjusts to the agent's win rate, which sped up convergence.",
+      "tags": ["RL", "GNN", "PPO", "Gymnasium"],
+      "links": {},
       "featured": false
     }
   ],
   "experience": [
     {
-      "role": "Software Engineer",
-      "org": "Company Name",
-      "location": "Remote",
-      "start": "2023-06",
+      "role": "Undergraduate Researcher",
+      "org": "DRONESLab, University at Buffalo",
+      "location": "Buffalo, NY",
+      "start": "2026-06",
       "end": "Present",
       "bullets": [
-        "Shipped feature X that improved metric Y by Z%",
-        "Led migration from A to B"
+        "Extending the lab's published VISION infrastructure-inspection system for Boston Dynamics Spot with adaptive perception and defect detection that generalizes to new settings",
+        "Built Open-Spot's Spot Operator, an open-source full-stack teleoperation and control framework that the lab's ongoing research runs on"
+      ]
+    },
+    {
+      "role": "Undergraduate Student Assistant",
+      "org": "Digital Manufacturing Lab, University at Buffalo",
+      "location": "Buffalo, NY",
+      "start": "2026-05",
+      "end": "Present",
+      "bullets": [
+        "Maintain and repair a fleet of 3D printers (Prusa MK4/XL, Markforged Two, Formlabs resin), diagnosing hardware and material-jetting issues",
+        "Fulfill student and faculty work orders, advising on material selection and preparing CAD models so parts can be printed"
+      ]
+    },
+    {
+      "role": "Autonomy Lead → Technical Advisor",
+      "org": "NASA LunaBotics",
+      "location": "Buffalo, NY",
+      "start": "2025-09",
+      "end": "Present",
+      "bullets": [
+        "Built an autonomous navigation stack for a lunar rover on Jetson Orin, integrating RTAB-Map visual SLAM, Nav2 path planning, and EKF fusion of ZED2i stereo camera and odometry data",
+        "Fixed TF frame conflicts and wrote a custom recovery behavior tree so the rover could reliably localize and drive over unstructured terrain",
+        "As Lead (through May 2026), took the system from non-functional to competition-ready under a hard SAR deadline; now advise the new lead on navigation and SLAM architecture"
+      ]
+    },
+    {
+      "role": "Team Lead → Project Lead → Technical Advisor",
+      "org": "UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2023-09",
+      "end": "Present",
+      "bullets": [
+        "Developed embedded systems software and a rover simulation prototype in ROS and Gazebo, cutting system latency by 30% and improving performance by 15%",
+        "Went from leading a 10-engineer subteam to leading 15 engineers across 4 subteams as Project Lead, hitting key milestones 20% ahead of schedule",
+        "Now mentor subteam leads as Technical Advisor and keep the system architecture consistent between leadership changes"
       ]
     }
   ],
   "contact": [
     { "label": "Email", "url": "mailto:travisminor10@gmail.com", "icon": "mail" },
     { "label": "GitHub", "url": "https://github.com/tmino1", "icon": "github" },
-    { "label": "LinkedIn", "url": "https://linkedin.com/in/tmino1", "icon": "linkedin" }
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/TravisMinor", "icon": "linkedin" }
   ]
 }

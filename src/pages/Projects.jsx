@@ -19,7 +19,7 @@ export default function Projects() {
             shape={SHAPES[i % SHAPES.length]}
             className="project-card"
           >
-            <img className="project-image" src={image} alt="" loading="lazy" />
+            {image && <img className="project-image" src={image} alt="" loading="lazy" />}
             <h2>{name}</h2>
             <p>{description}</p>
             <div className="project-tags">
