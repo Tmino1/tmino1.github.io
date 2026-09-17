@@ -27,6 +27,14 @@
   --accent-bg: rgba(96, 153, 192, 0.12);
   --accent-border: rgba(96, 153, 192, 0.4);
 
+  /* --- terminal ansi colors, used for status indicators --- */
+  --green: #819b69;
+  --cyan: #66a5ad;
+  --magenta: #b279a7;
+  --yellow: #b77e64;
+  --red: #de6e7c;
+  --bright-yellow: #d68c67; /* the scheme's closest color to Spot's yellow */
+
   /* --- borders / shadow --- */
   --border: #2e2e2e;
   --border-soft: rgba(255, 255, 255, 0.06);

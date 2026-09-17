@@ -12,20 +12,20 @@
 }
 
 .project-detail-header {
+  /* number · title · status on one line, wrapping on narrow screens */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-5);
+  row-gap: var(--space-2);
   margin-block: var(--space-4) var(--space-5);
   padding-top: var(--space-2);
   border-top: 1px solid var(--border);
 
   h1 {
+    flex: 1 1 auto;
     margin: var(--space-2) 0;
   }
-}
-
-.project-detail-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--space-4);
 }
 
 .project-detail-snapshot {
@@ -34,6 +34,13 @@
   @media (max-width: 860px) {
     aspect-ratio: 16 / 9;
   }
+}
+
+/* a lone image shows at its own shape instead of a fixed widescreen frame */
+img.project-detail-snapshot {
+  aspect-ratio: auto;
+  height: auto;
+  max-height: 75vh;
 }
 
 .project-detail-body {

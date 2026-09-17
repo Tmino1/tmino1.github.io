@@ -16,15 +16,49 @@
   content: '● ';
 }
 
-.project-status--active {
+.project-status--active,
+.project-status--in-development {
   color: var(--accent);
+}
+
+.project-status--prototype {
+  color: var(--red);
+}
+
+.project-status--testing {
+  color: var(--cyan);
+}
+
+.project-status--public-alpha {
+  color: var(--bright-yellow);
+}
+
+.project-status--research {
+  color: var(--magenta);
+}
+
+.project-status--deployed,
+.project-status--maintained,
+.project-status--complete {
+  color: var(--green);
+}
+
+.project-status--paused {
+  color: var(--text-secondary);
+}
+
+/* planned / archived keep the muted default */
+.project-status--archived::before {
+  content: '○ ';
 }
 
 .project-snapshot {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  /* fit the whole image in the frame; diagrams and screenshots lose their
+     labels if cropped */
+  object-fit: contain;
   border-radius: var(--radius-sm);
   background: var(--bg-elevated-2);
 }
@@ -41,21 +75,30 @@
 
 .project-links {
   display: flex;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
+/* same pill as the project page's back / prev / next links */
 .project-links a {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
   text-decoration: none;
   font-family: var(--mono);
   font-size: 14px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .project-links a:hover {
   color: var(--accent-strong);
+  background: var(--bg-elevated-2);
+  border-color: var(--accent);
 }
 
 .project-specs {

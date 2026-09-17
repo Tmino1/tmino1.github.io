@@ -26,11 +26,9 @@ export default function ProjectDetail() {
       </Link>
 
       <header className="project-detail-header">
-        <div className="project-detail-meta">
-          <ProjectId index={index} />
-          <ProjectStatus status={status} />
-        </div>
+        <ProjectId index={index} />
         <h1>{name}</h1>
+        <ProjectStatus status={status} />
       </header>
 
       <ProjectGallery images={images} className="project-detail-snapshot" />

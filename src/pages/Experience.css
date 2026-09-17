@@ -31,6 +31,20 @@
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 4px var(--bg);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* light up the dot for whichever panel is hovered */
+.timeline-item:hover::before {
+  background: var(--accent-strong);
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 10px 3px rgba(97, 171, 218, 0.7),
+    0 0 24px 6px rgba(97, 171, 218, 0.3);
+  transform: scale(1.25);
 }
 
 .timeline-milestone {

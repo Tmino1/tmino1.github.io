@@ -5,10 +5,27 @@ export function ProjectId({ index }) {
   return <span className="project-id">P-{String(index + 1).padStart(2, '0')}</span>
 }
 
+// `status` in content.json must be one of these keys; the color comes from
+// the matching .project-status--<key> rule in ProjectMeta.css
+const PROJECT_STATUSES = {
+  active: 'Active',
+  'in-development': 'In Development',
+  prototype: 'Prototype',
+  research: 'Research',
+  testing: 'Testing',
+  'public-alpha': 'Public Alpha',
+  deployed: 'Deployed',
+  maintained: 'Maintained',
+  complete: 'Complete',
+  paused: 'Paused',
+  planned: 'Planned',
+  archived: 'Archived',
+}
+
 export function ProjectStatus({ status }) {
   return (
     <div className={`project-status project-status--${status}`}>
-      {status === 'active' ? 'Active' : 'Complete'}
+      {PROJECT_STATUSES[status] ?? status}
     </div>
   )
 }
@@ -23,18 +40,19 @@ export function ProjectSnapshot({ image, className = '' }) {
   )
 }
 
-export function ProjectLinks({ links }) {
-  if (!links.live && !links.source) return null
+export function ProjectLinks({ links = {} }) {
+  const { github, live } = links
+  if (!github && !live) return null
   return (
     <div className="project-links">
-      {links.live && (
-        <a href={links.live} target="_blank" rel="noreferrer">
-          <Icon name="external-link" /> Live
+      {github && (
+        <a href={github} target="_blank" rel="noreferrer">
+          <Icon name="github" /> GitHub
         </a>
       )}
-      {links.source && (
-        <a href={links.source} target="_blank" rel="noreferrer">
-          <Icon name="github" /> Source
+      {live && (
+        <a href={live} target="_blank" rel="noreferrer">
+          <Icon name="external-link" /> Live
         </a>
       )}
     </div>

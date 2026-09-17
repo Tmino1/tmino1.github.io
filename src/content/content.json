@@ -53,11 +53,42 @@
   ],
   "projects": [
     {
+      "slug": "fly-mhw",
+      "order": 7,
+      "name": "Fly MHW",
+      "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon (and proving my friend is worse than a fly at gaming). The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
+      "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
+      "links": { "github": "https://github.com/Tmino1/fly-mhw" },
+      "status": "prototype",
+      "dates": "Sep 2026 – Present",
+      "specs": {
+        "Platform": "Monster Hunter World (PC)",
+        "Target": "Great Jagras, Great Sword",
+        "Software": "LuaEngine, evdev virtual gamepad"
+      }
+    },
+    {
+      "slug": "go2-ros2-sdk",
+      "order": 3,
+      "name": "Go2 ROS 2 SDK",
+      "description": "My fork of the open-source ROS 2 SDK for Unitree's Go2 robot dog. It now runs directly on the robot's own onboard computer instead of needing a separate one, using a reproducible Nix setup. I tuned the navigation so the robot moves slowly and carefully, and fixed bugs in the lidar pipeline that were creating phantom obstacles, merging distinct map points together and wasting CPU. A staged smoke test checks every change before it runs on the real robot.",
+      "tags": ["ROS 2", "Nav2", "Python", "Nix", "LiDAR"],
+      "links": { "github": "https://github.com/Tmino1/go2_ros2_sdk" },
+      "status": "maintained",
+      "dates": "Sep 2026 – Present",
+      "specs": {
+        "Platform": "Unitree Go2",
+        "Hardware": "Onboard Jetson",
+        "Software": "ROS 2 Humble, slam_toolbox"
+      }
+    },
+    {
       "slug": "vision-inspect",
+      "order": 2,
       "name": "VISION-Inspect",
       "description": "VISION-Inspect sends Spot out to inspect infrastructure like culverts and look for damage. Instead of stopping to take pictures on a fixed schedule, the robot uses its sensors and an AI vision model to decide what's worth a closer look. I'm also testing whether the model can find defects in kinds of structures it has never seen before.",
       "tags": ["Python", "VLM", "LiDAR", "Nav2"],
-      "links": {},
+      "links": { "github": "" },
       "status": "active",
       "dates": "Aug 2026 – Present",
       "specs": {
@@ -68,11 +99,12 @@
     },
     {
       "slug": "open-spot-operator",
+      "order": 1,
       "name": "Open-Spot: Spot Operator",
       "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. It's designed to be safe first: if the connection drops or something crashes, the robot stops, and the emergency stop always works.",
       "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
-      "links": {},
-      "status": "active",
+      "links": { "github": "https://droneslab.github.io/OpenSpot/" },
+      "status": "public-alpha",
       "dates": "Jun 2026 – Present",
       "specs": {
         "Platform": "Boston Dynamics Spot",
@@ -82,10 +114,11 @@
     },
     {
       "slug": "lunabotics-rover",
+      "order": 4,
       "name": "NASA LunaBotics Rover",
       "description": "UB's rover for NASA's LunaBotics competition, where university teams build robots that work on their own in simulated lunar terrain. I built its autonomy system, which lets the rover figure out where it is using its cameras, plan a path, and recover when it gets stuck, all without a driver. I led the autonomy subteam that took it from not working at all to ready for competition.",
       "tags": ["ROS 2", "Nav2", "RTAB-Map", "Jetson Orin"],
-      "links": {},
+      "links": { "github": "" },
       "images": [
         "/projects/lunabotics-rover/img_3521.jpg",
         "/projects/lunabotics-rover/img_3443.jpg",
@@ -102,10 +135,11 @@
     },
     {
       "slug": "spacebulls-rover",
+      "order": 5,
       "name": "UB SpaceBulls Rover",
       "description": "The rover built by UB SpaceBulls, the university's student robotics club. I worked on the software on its onboard hardware and built a simulated version of the rover in Gazebo, so the team could test changes on a computer before running them on the real robot. Along the way I went from leading one subteam to leading the whole project.",
       "tags": ["ROS 2", "Gazebo", "Nav2", "RTAB-Map"],
-      "links": {},
+      "links": { "github": "" },
       "status": "complete",
       "dates": "Sep 2024 – May 2026",
       "specs": {
@@ -116,10 +150,11 @@
     },
     {
       "slug": "catan-agent",
+      "order": 6,
       "name": "Catan Agent",
       "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
       "tags": ["RL", "GNN", "PPO", "Gymnasium"],
-      "links": {},
+      "links": { "github": "" },
       "status": "complete",
       "dates": "Spring 2026",
       "specs": {
