@@ -18,7 +18,7 @@ export default function Projects() {
           <span>Index / Project</span>
           <span>Specs</span>
         </div>
-        {projects.map(({ slug, name, description, tags, image, links, status, dates, specs }, i) => (
+        {projects.map(({ slug, name, description, tags, images, links, status, dates, specs }, i) => (
           <article key={slug} className="spec">
             <ProjectId index={i} />
 
@@ -35,7 +35,7 @@ export default function Projects() {
             </div>
 
             <div className="spec-side">
-              <ProjectSnapshot image={image} />
+              <ProjectSnapshot image={images?.[0]} />
               <ProjectSpecs specs={specs} tags={tags} dates={dates} />
             </div>
           </article>

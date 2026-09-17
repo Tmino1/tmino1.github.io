@@ -28,7 +28,7 @@
   z-index: 0;
   background-image: radial-gradient(
     ellipse at top,
-    rgba(138, 168, 189, 0.06),
+    rgba(96, 153, 192, 0.06),
     transparent 60%
   );
 }

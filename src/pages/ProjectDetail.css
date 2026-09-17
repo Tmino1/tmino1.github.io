@@ -12,13 +12,20 @@
 }
 
 .project-detail-header {
-  margin-block: var(--space-6) var(--space-5);
+  margin-block: var(--space-4) var(--space-5);
   padding-top: var(--space-2);
   border-top: 1px solid var(--border);
 
   h1 {
     margin: var(--space-2) 0;
   }
+}
+
+.project-detail-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
 }
 
 .project-detail-snapshot {
@@ -53,5 +60,24 @@
   gap: var(--space-4);
   margin-top: var(--space-7);
   padding-top: var(--space-4);
+  /* cancel most of .shell-main's bottom padding so the gap below matches the gap above */
+  margin-bottom: calc(var(--space-4) - var(--space-8));
   border-top: 1px solid var(--border);
+}
+
+.project-detail-back,
+.project-detail-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.project-detail-back:hover,
+.project-detail-nav a:hover {
+  background: var(--bg-elevated-2);
+  border-color: var(--accent);
 }

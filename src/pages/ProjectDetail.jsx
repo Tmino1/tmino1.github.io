@@ -3,10 +3,10 @@ import { projects } from '../content'
 import {
   ProjectId,
   ProjectLinks,
-  ProjectSnapshot,
   ProjectSpecs,
   ProjectStatus,
 } from '../components/project/ProjectMeta'
+import ProjectGallery from '../components/project/ProjectGallery'
 import NotFound from './NotFound'
 import './ProjectDetail.css'
 
@@ -15,7 +15,7 @@ export default function ProjectDetail() {
   const index = projects.findIndex((project) => project.slug === slug)
   if (index === -1) return <NotFound />
 
-  const { name, description, tags, image, links, status, dates, specs } = projects[index]
+  const { name, description, tags, images, links, status, dates, specs } = projects[index]
   const prev = projects[index - 1]
   const next = projects[index + 1]
 
@@ -26,12 +26,14 @@ export default function ProjectDetail() {
       </Link>
 
       <header className="project-detail-header">
-        <ProjectId index={index} />
+        <div className="project-detail-meta">
+          <ProjectId index={index} />
+          <ProjectStatus status={status} />
+        </div>
         <h1>{name}</h1>
-        <ProjectStatus status={status} />
       </header>
 
-      <ProjectSnapshot image={image} className="project-detail-snapshot" />
+      <ProjectGallery images={images} className="project-detail-snapshot" />
 
       <div className="project-detail-body">
         <div className="project-detail-text">

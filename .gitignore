@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# camera raws (keep originals out of the deployed site)
+*.CR2

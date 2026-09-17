@@ -40,8 +40,7 @@
       "items": [
         { "name": "Gazebo", "level": "intermediate" },
         { "name": "Isaac Sim", "level": "beginner" },
-        { "name": "Fusion 360", "level": "intermediate" },
-        { "name": "OpenSCAD", "level": "intermediate" }
+        { "name": "Fusion 360", "level": "intermediate" }
       ]
     },
     {
@@ -87,6 +86,11 @@
       "description": "UB's rover for NASA's LunaBotics competition, where university teams build robots that work on their own in simulated lunar terrain. I built its autonomy system, which lets the rover figure out where it is using its cameras, plan a path, and recover when it gets stuck, all without a driver. I led the autonomy subteam that took it from not working at all to ready for competition.",
       "tags": ["ROS 2", "Nav2", "RTAB-Map", "Jetson Orin"],
       "links": {},
+      "images": [
+        "/projects/lunabotics-rover/img_3521.jpg",
+        "/projects/lunabotics-rover/img_3443.jpg",
+        "/projects/lunabotics-rover/img_3499.jpg"
+      ],
       "status": "complete",
       "dates": "Sep 2025 – May 2026",
       "specs": {
