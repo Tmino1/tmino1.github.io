@@ -56,7 +56,7 @@
       "slug": "fly-mhw",
       "order": 7,
       "name": "Fly MHW",
-      "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon (and proving my friend is worse than a fly at gaming). The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
+      "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon, one of its hardest monsters. The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
       "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
       "links": { "github": "https://github.com/Tmino1/fly-mhw" },
       "status": "prototype",
