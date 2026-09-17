@@ -7,6 +7,10 @@ export default function Home() {
   return (
     <div className="home">
       <section className="hero">
+        <div>
+          <h1>{site.name}</h1>
+          <p className="hero-tagline">{site.tagline}</p>
+        </div>
         {site.photo ? (
           <img className="hero-photo" src={site.photo} alt={site.name} />
         ) : (
@@ -14,10 +18,6 @@ export default function Home() {
             Photo
           </div>
         )}
-        <div>
-          <h1>{site.name}</h1>
-          <p className="hero-tagline">{site.tagline}</p>
-        </div>
       </section>
 
       <section>
