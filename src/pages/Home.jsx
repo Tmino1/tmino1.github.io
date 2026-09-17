@@ -1,7 +1,12 @@
-import { site, about, skills } from '../content'
-import Panel from '../components/ui/Panel'
-import Badge from '../components/ui/Badge'
+import { site, about, skills, contact } from '../content'
+import Icon from '../components/ui/Icon'
 import './Home.css'
+
+// the profile table: personal details first, then one row per skill group
+const profileRows = [
+  ...Object.entries(about.profile),
+  ...skills.map(({ group, items }) => [group, items.map(({ name }) => name).join(', ')]),
+]
 
 export default function Home() {
   return (
@@ -21,30 +26,34 @@ export default function Home() {
       </section>
 
       <section>
-        <h2>{about.heading}</h2>
-        <p className="about-summary">{about.summary}</p>
-        <ul className="about-highlights">
-          {about.highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
+        <div className="about-header">
+          <span>{about.heading}</span>
+          <span>Profile</span>
+        </div>
 
-      <section>
-        <h2>Skills</h2>
-        <div className="skills-grid">
-          {skills.map(({ group, items }) => (
-            <Panel key={group} hoverable>
-              <h3>{group}</h3>
-              <div className="skill-badges">
-                {items.map(({ name, level }) => (
-                  <Badge key={name} variant={level}>
-                    {name}
-                  </Badge>
-                ))}
+        <div className="about-body">
+          <div className="about-text">
+            {about.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {about.looking && <p className="about-looking">{about.looking}</p>}
+            <div className="about-links">
+              {contact.map(({ label, url, icon }) => (
+                <a key={label} href={url} target="_blank" rel="noreferrer">
+                  <Icon name={icon} /> {label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <dl className="about-profile">
+            {profileRows.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
               </div>
-            </Panel>
-          ))}
+            ))}
+          </dl>
         </div>
       </section>
     </div>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="fly-mhw control loop: a fly-brain network sends actions through a virtual gamepad into Monster Hunter World, and the Lua state reader and screen capture feed observations and reward back through MHWEnv">
+  <style>
+    .box { fill: #202020; stroke: #2e2e2e; stroke-width: 1.5; rx: 10; }
+    .box-next { fill: #191919; stroke: #3d3839; stroke-width: 1.5; stroke-dasharray: 6 5; rx: 10; }
+    .name { font: 600 19px ui-monospace, "SFMono-Regular", Menlo, monospace; fill: #bbbbbb; }
+    .sub { font: 14px ui-monospace, "SFMono-Regular", Menlo, monospace; fill: #6b6b6b; }
+    .edge { font: 13px ui-monospace, "SFMono-Regular", Menlo, monospace; fill: #8e8e8e; }
+    .title { font: 15px ui-monospace, "SFMono-Regular", Menlo, monospace; fill: #6b6b6b; letter-spacing: 1.2px; }
+    .wire { stroke: #6099c0; stroke-width: 2; fill: none; marker-end: url(#tip); }
+    .wire-next { stroke: #3d3839; stroke-width: 2; fill: none; stroke-dasharray: 6 5; marker-end: url(#tip-next); }
+  </style>
+
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#6099c0" />
+    </marker>
+    <marker id="tip-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#3d3839" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="620" fill="#191919" />
+  <text x="56" y="52" class="title">FLY-MHW · CONTROL LOOP</text>
+
+  <!-- top row: brain to game -->
+  <rect class="box" rx="10" x="56" y="100" width="242" height="104" />
+  <text x="177" y="140" text-anchor="middle" class="name">Fly brain</text>
+  <text x="177" y="164" text-anchor="middle" class="sub">connectome RNN,</text>
+  <text x="177" y="184" text-anchor="middle" class="sub">fixed wiring</text>
+
+  <rect class="box" rx="10" x="358" y="100" width="242" height="104" />
+  <text x="479" y="140" text-anchor="middle" class="name">Action space</text>
+  <text x="479" y="164" text-anchor="middle" class="sub">8 verified actions,</text>
+  <text x="479" y="184" text-anchor="middle" class="sub">Great Sword</text>
+
+  <rect class="box" rx="10" x="660" y="100" width="242" height="104" />
+  <text x="781" y="140" text-anchor="middle" class="name">Virtual gamepad</text>
+  <text x="781" y="164" text-anchor="middle" class="sub">evdev, /dev/uinput</text>
+
+  <rect class="box" rx="10" x="962" y="100" width="182" height="104" />
+  <text x="1053" y="134" text-anchor="middle" class="name">MHW</text>
+  <text x="1053" y="158" text-anchor="middle" class="sub">Proton,</text>
+  <text x="1053" y="178" text-anchor="middle" class="sub">Great Jagras</text>
+
+  <line class="wire" x1="298" y1="152" x2="350" y2="152" />
+  <line class="wire" x1="600" y1="152" x2="652" y2="152" />
+  <line class="wire" x1="902" y1="152" x2="954" y2="152" />
+  <text x="324" y="138" text-anchor="middle" class="edge">act</text>
+  <text x="626" y="138" text-anchor="middle" class="edge">press</text>
+
+  <!-- bottom row: game back to brain -->
+  <rect class="box" rx="10" x="912" y="380" width="232" height="124" />
+  <text x="1028" y="418" text-anchor="middle" class="name">Sensing</text>
+  <text x="1028" y="442" text-anchor="middle" class="sub">state_reader.lua</text>
+  <text x="1028" y="462" text-anchor="middle" class="sub">(LuaEngine),</text>
+  <text x="1028" y="482" text-anchor="middle" class="sub">grim capture</text>
+
+  <rect class="box" rx="10" x="484" y="380" width="242" height="124" />
+  <text x="605" y="418" text-anchor="middle" class="name">MHWEnv</text>
+  <text x="605" y="442" text-anchor="middle" class="sub">observation,</text>
+  <text x="605" y="462" text-anchor="middle" class="sub">reward.py,</text>
+  <text x="605" y="482" text-anchor="middle" class="sub">episode bounds</text>
+
+  <rect class="box-next" rx="10" x="56" y="380" width="242" height="124" />
+  <text x="177" y="424" text-anchor="middle" class="name">Training</text>
+  <text x="177" y="450" text-anchor="middle" class="sub">trains gains and</text>
+  <text x="177" y="470" text-anchor="middle" class="sub">readout only</text>
+
+  <!-- game down into sensing -->
+  <path class="wire" d="M 1053 204 L 1053 372" />
+  <text x="1069" y="296" class="edge">hp, pos, quest</text>
+
+  <line class="wire" x1="904" y1="442" x2="734" y2="442" />
+  <text x="819" y="426" text-anchor="middle" class="edge">snapshot</text>
+
+  <line class="wire-next" x1="476" y1="442" x2="306" y2="442" />
+  <text x="391" y="426" text-anchor="middle" class="edge">obs, reward</text>
+
+  <path class="wire-next" d="M 177 372 L 177 212" />
+  <text x="193" y="296" class="edge">weights</text>
+
+  <text x="56" y="572" class="sub">solid = working today · dashed = not built yet</text>
+</svg>

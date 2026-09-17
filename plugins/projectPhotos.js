@@ -30,16 +30,28 @@ export default function projectPhotos() {
     }
   }
 
+  // a photo the browser can't display (.heic off an iPhone, a camera raw) is
+  // easy to miss otherwise: it just never shows up on the site
+  const warnSkipped = (slug, files) => {
+    const skipped = files.filter(
+      (file) => !IMAGE_EXT.test(file) && !file.startsWith('.'),
+    )
+    if (skipped.length) {
+      console.warn(
+        `[project-photos] ${slug}: skipped ${skipped.join(', ')} — not a web image format (convert to jpg/png/webp)`,
+      )
+    }
+  }
+
   const collectPhotos = () =>
     Object.fromEntries(
       readSlugs().map((slug) => {
         const dir = path.join(photosDir, slug)
-        const files = fs.existsSync(dir)
-          ? fs
-              .readdirSync(dir)
-              .filter((file) => IMAGE_EXT.test(file))
-              .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-          : []
+        const all = fs.existsSync(dir) ? fs.readdirSync(dir) : []
+        warnSkipped(slug, all)
+        const files = all
+          .filter((file) => IMAGE_EXT.test(file))
+          .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
         return [slug, files.map((file) => `/projects/${slug}/${file}`)]
       }),
     )

@@ -88,8 +88,31 @@
   gap: var(--space-3);
 }
 
+/* the title link is stretched over the whole row, so the picture must not
+   intercept clicks: its hover filter makes a stacking context that would
+   otherwise paint it above that overlay and swallow them */
+.spec-side .project-figure {
+  pointer-events: none;
+}
+
+/* every row gets the same image footprint, whatever shape the photo is, so the
+   spec lines below end flush with the picture instead of running wider */
 .spec-side .project-snapshot {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--bg-elevated-2);
   transition: filter 0.15s ease;
+}
+
+/* a diagram is fitted into that box rather than cropped, so none of it is cut.
+   The leftover space is filled with the page background, so the diagram reads
+   as sitting on the page rather than inside a lighter panel. */
+.spec-side img.project-snapshot[src$='.svg'] {
+  object-fit: contain;
+  background: var(--bg);
 }
 
 .spec:hover .project-snapshot {

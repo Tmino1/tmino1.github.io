@@ -1,3 +1,8 @@
+.project-gallery-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 .project-gallery {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -19,12 +24,27 @@
   display: none;
 }
 
+/* the carousel shows one full slide at a time, so the tiles are desktop only */
+.project-gallery-tiles {
+  display: none;
+}
+
 .project-gallery-slide {
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  padding: 0;
+  border: none;
+  background: none;
   scroll-snap-align: start;
+  cursor: zoom-in;
+}
+
+.project-gallery-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .project-gallery-arrow {
@@ -101,38 +121,176 @@
   background: var(--accent);
 }
 
-/* desktop: tile every image in the same footprint. The first image is the
-   lead tile; the rest fill columns of two to its right. */
+/* caption for the focused image only: the lead tile on desktop, the visible
+   slide on the carousel */
+.project-gallery-caption {
+  margin: var(--space-3) 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* full screen view: sits inside the framed "screen" rather than over the black
+   desktop margin around it, so the frame metaphor survives */
+.project-gallery-zoom {
+  position: fixed;
+  inset: var(--frame-gap);
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  display: none;
+  padding: var(--space-5);
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--frame-radius);
+  background: var(--bg);
+  cursor: zoom-out;
+}
+
+.project-gallery-zoom[open] {
+  display: grid;
+  place-items: center;
+}
+
+.project-gallery-zoom::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.project-gallery-zoom figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  cursor: default;
+}
+
+.project-gallery-zoom img {
+  display: block;
+  min-height: 0;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.project-gallery-zoom figcaption {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.project-gallery-zoom-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.project-gallery-zoom-close:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+
+/* desktop: a lead frame beside a rail of thumbnails, every frame a fixed size.
+   Focusing an image trades it with the one in the lead, so the pictures swap
+   places but no frame ever moves or resizes. */
 @media (min-width: 861px) {
   .project-gallery {
     background: none;
     border-radius: 0;
+    overflow: visible;
   }
 
-  .project-gallery-track {
+  .project-gallery-track,
+  .project-gallery-arrow,
+  .project-gallery-dots {
+    display: none;
+  }
+
+  .project-gallery-tiles {
     display: grid;
+    height: 100%;
     grid-template-columns: minmax(0, 2fr);
     grid-template-rows: repeat(2, minmax(0, 1fr));
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
     gap: var(--space-2);
-    overflow: hidden;
   }
 
-  /* tiles are cropped to keep the grid tidy */
-  .project-gallery-slide {
-    object-fit: cover;
+  .project-gallery-tile {
+    position: relative;
+    padding: 0;
+    border: none;
     border-radius: var(--radius-sm);
-    scroll-snap-align: none;
+    overflow: hidden;
+    background: var(--bg-elevated-2);
+    cursor: pointer;
+    outline-offset: 3px;
+    filter: brightness(0.6);
+    transition: filter 0.15s ease;
   }
 
-  .project-gallery-slide:first-child,
-  .project-gallery-slide:nth-child(2):last-child {
+  .project-gallery-tile:hover {
+    filter: brightness(1.05);
+  }
+
+  .project-gallery-tile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-gallery-tile.is-lead,
+  .project-gallery-tile.is-tall {
     grid-row: span 2;
   }
 
-  .project-gallery-arrow,
-  .project-gallery-dots {
-    display: none;
+  /* the lead is not a swap target, it opens the image full screen */
+  .project-gallery-tile.is-lead {
+    cursor: zoom-in;
+    filter: none;
+  }
+
+  /* the lead stacks every image and reveals one, so a swap cross-fades */
+  .project-gallery-tile.is-lead img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-gallery-tile.is-lead img.is-visible {
+    opacity: 1;
+  }
+
+  /* a thumbnail taking on the outgoing lead image fades it in to match */
+  .project-gallery-tile:not(.is-lead) img {
+    animation: project-gallery-fade 0.25s ease;
+  }
+
+  @keyframes project-gallery-fade {
+    from {
+      opacity: 0;
+    }
   }
 }

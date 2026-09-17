@@ -8,12 +8,19 @@
   },
   "about": {
     "heading": "About",
-    "summary": "I'm a Computer Science student at the University at Buffalo, minoring in Robotics and Math. I work on field robotics at DRONESLab and lead autonomy work on student rover teams. I care most about robot software that holds up outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
-    "highlights": [
-      "B.S. Computer Science, Minor in Robotics and Math — University at Buffalo, expected Dec. 2026",
-      "Undergraduate researcher at DRONESLab, building open-source control software for Boston Dynamics Spot",
-      "Led autonomy for NASA LunaBotics and 15 engineers across 4 subteams at UB SpaceBulls"
-    ]
+    "paragraphs": [
+      "I'm a Computer Science student at the University at Buffalo who builds software for robots that have to work outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
+      "Right now I'm at DRONESLab, teaching Boston Dynamics' Spot to inspect infrastructure on its own. Before that, I led autonomy for UB's NASA LunaBotics rover."
+    ],
+    "looking": "",
+    "profile": {
+      "Based in": "Buffalo, NY",
+      "Studying": "B.S. Computer Science, University at Buffalo",
+      "Minors": "Robotics, Math",
+      "Graduating": "Dec 2026",
+      "Currently": "Undergraduate Researcher, DRONESLab",
+      "Focus": "Navigation, SLAM, teleoperation, safety-critical control"
+    }
   },
   "skills": [
     {
@@ -59,6 +66,9 @@
       "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon, one of its hardest monsters. The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
       "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
       "links": { "github": "https://github.com/Tmino1/fly-mhw" },
+      "captions": {
+        "architecture.svg": "The control loop: the fly-brain network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet."
+      },
       "status": "prototype",
       "dates": "Sep 2026 – Present",
       "specs": {
@@ -74,6 +84,10 @@
       "description": "My fork of the open-source ROS 2 SDK for Unitree's Go2 robot dog. It now runs directly on the robot's own onboard computer instead of needing a separate one, using a reproducible Nix setup. I tuned the navigation so the robot moves slowly and carefully, and fixed bugs in the lidar pipeline that were creating phantom obstacles, merging distinct map points together and wasting CPU. A staged smoke test checks every change before it runs on the real robot.",
       "tags": ["ROS 2", "Nav2", "Python", "Nix", "LiDAR"],
       "links": { "github": "https://github.com/Tmino1/go2_ros2_sdk" },
+      "captions": {
+        "01-go2.png": "Onboard lidar point cloud in RViz, colored by height, with the Go2's model in the corridor it just mapped.",
+        "02-supervisor-abort.png": "Costmap replay of a run: the first plan (blue) against the actual track (green), stopping short of the goal footprint."
+      },
       "status": "maintained",
       "dates": "Sep 2026 – Present",
       "specs": {
@@ -88,7 +102,10 @@
       "name": "VISION-Inspect",
       "description": "VISION-Inspect sends Spot out to inspect infrastructure like culverts and look for damage. Instead of stopping to take pictures on a fixed schedule, the robot uses its sensors and an AI vision model to decide what's worth a closer look. I'm also testing whether the model can find defects in kinds of structures it has never seen before.",
       "tags": ["Python", "VLM", "LiDAR", "Nav2"],
-      "links": { "github": "" },
+      "links": {
+        "github": "",
+        "live": { "href": "https://droneslab.github.io/vision/", "label": "VISION v1" }
+      },
       "status": "active",
       "dates": "Aug 2026 – Present",
       "specs": {
@@ -104,6 +121,9 @@
       "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. It's designed to be safe first: if the connection drops or something crashes, the robot stops, and the emergency stop always works.",
       "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
       "links": { "github": "https://droneslab.github.io/OpenSpot/" },
+      "captions": {
+        "openspot-payload.webp": "Modular sensor payload for Spot: Jetson enclosure, GPS antenna, IMU and long-range WiFi."
+      },
       "status": "public-alpha",
       "dates": "Jun 2026 – Present",
       "specs": {
@@ -119,6 +139,11 @@
       "description": "UB's rover for NASA's LunaBotics competition, where university teams build robots that work on their own in simulated lunar terrain. I built its autonomy system, which lets the rover figure out where it is using its cameras, plan a path, and recover when it gets stuck, all without a driver. I led the autonomy subteam that took it from not working at all to ready for competition.",
       "tags": ["ROS 2", "Nav2", "RTAB-Map", "Jetson Orin"],
       "links": { "github": "" },
+      "captions": {
+        "img_3521.jpg": "The rover driving through regolith simulant in the competition arena.",
+        "img_3443.jpg": "Staged before a run at the 2026 UCF Lunabotics competition.",
+        "img_3499.jpg": "Mission control: drive and drum controls, live camera feeds and telemetry over WebSockets."
+      },
       "images": [
         "/projects/lunabotics-rover/img_3521.jpg",
         "/projects/lunabotics-rover/img_3443.jpg",
@@ -154,7 +179,15 @@
       "name": "Catan Agent",
       "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
       "tags": ["RL", "GNN", "PPO", "Gymnasium"],
-      "links": { "github": "" },
+      "links": {
+        "github": "",
+        "live": { "href": "/papers/catan-agent.pdf", "label": "Paper" }
+      },
+      "captions": {
+        "01-mean-return.png": "Mean return over the fine-tuning run: the agent keeps gaining as its opponents get stronger.",
+        "02-policy-entropy.png": "Policy entropy falling as the agent commits to a strategy instead of exploring.",
+        "03-losses-by-phase.png": "Policy and value-function loss across all eight curriculum phases."
+      },
       "status": "complete",
       "dates": "Spring 2026",
       "specs": {

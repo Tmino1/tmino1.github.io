@@ -37,7 +37,7 @@
 }
 
 /* a lone image shows at its own shape instead of a fixed widescreen frame */
-img.project-detail-snapshot {
+img.project-snapshot.project-detail-snapshot {
   aspect-ratio: auto;
   height: auto;
   max-height: 75vh;

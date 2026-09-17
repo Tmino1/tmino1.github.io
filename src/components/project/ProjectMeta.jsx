@@ -31,28 +31,46 @@ export function ProjectStatus({ status }) {
 }
 
 export function ProjectSnapshot({ image, className = '' }) {
-  return image ? (
-    <img className={`project-snapshot ${className}`.trim()} src={image} alt="" loading="lazy" />
-  ) : (
-    <div className={`project-snapshot project-snapshot--placeholder ${className}`.trim()}>
-      Snapshot
-    </div>
+  if (!image) {
+    return (
+      <div className={`project-snapshot project-snapshot--placeholder ${className}`.trim()}>
+        Snapshot
+      </div>
+    )
+  }
+
+  return (
+    <figure className="project-figure">
+      <img
+        className={`project-snapshot ${className}`.trim()}
+        src={image.src}
+        alt={image.caption || ''}
+        loading="lazy"
+      />
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
   )
 }
 
+// a link is a bare url, or { href, label } when the default wording is wrong
+// for it — a docs site, say, or a page for an earlier revision
+const resolveLink = (link, label) =>
+  typeof link === 'string' ? { href: link, label } : { label, ...link }
+
 export function ProjectLinks({ links = {} }) {
-  const { github, live } = links
-  if (!github && !live) return null
+  const github = resolveLink(links.github, 'GitHub')
+  const live = resolveLink(links.live, 'Live')
+  if (!github.href && !live.href) return null
   return (
     <div className="project-links">
-      {github && (
-        <a href={github} target="_blank" rel="noreferrer">
-          <Icon name="github" /> GitHub
+      {github.href && (
+        <a href={github.href} target="_blank" rel="noreferrer">
+          <Icon name="github" /> {github.label}
         </a>
       )}
-      {live && (
-        <a href={live} target="_blank" rel="noreferrer">
-          <Icon name="external-link" /> Live
+      {live.href && (
+        <a href={live.href} target="_blank" rel="noreferrer">
+          <Icon name="external-link" /> {live.label}
         </a>
       )}
     </div>
