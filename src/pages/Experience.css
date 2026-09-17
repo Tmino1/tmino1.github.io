@@ -33,6 +33,43 @@
   box-shadow: 0 0 0 4px var(--bg);
 }
 
+.timeline-milestone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.timeline-milestone::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--space-5) * -1 - 6px);
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  transform: translateY(-50%);
+}
+
+.timeline-milestone::after {
+  content: '';
+  flex: 1;
+  min-width: var(--space-5);
+  height: 1px;
+  background: var(--border);
+}
+
+.timeline-milestone-label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.timeline-milestone-detail {
+  color: var(--text-muted);
+}
+
 .timeline-header {
   display: flex;
   flex-wrap: wrap;

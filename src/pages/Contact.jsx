@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <div className="contact">
       <h1>Contact</h1>
-      <Panel shape="e" className="contact-panel">
+      <Panel className="contact-panel">
         <p>
           Based in {site.location}. Reach out below — happy to talk about work,
           projects, or anything interesting you're building.

@@ -1,47 +1,97 @@
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-  gap: var(--space-5);
-  margin-top: var(--space-4);
+.spec-sheet {
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--border);
 }
 
-.project-card {
+.spec-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.spec {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--border);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.spec:has(.spec-link:focus-visible) {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 4px;
+}
+
+.spec-body {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.project-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  background: var(--bg-elevated-2);
+.spec-body h2 {
+  margin: 0;
 }
 
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.project-links {
-  display: flex;
-  gap: var(--space-4);
-  margin-top: auto;
-  padding-top: var(--space-2);
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--accent);
+.spec-link {
   text-decoration: none;
-  font-family: var(--mono);
-  font-size: 14px;
+  outline: none;
+  transition: color 0.15s ease;
 }
 
-.project-link:hover {
+/* stretch the title link over the whole row so any click opens the project */
+.spec-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.spec-arrow {
+  display: inline-block;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.spec:hover .spec-link {
   color: var(--accent-strong);
+}
+
+.spec:hover .spec-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.spec .project-links {
+  position: relative;
+  z-index: 1;
+}
+
+.spec-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.spec-side .project-snapshot {
+  transition: filter 0.15s ease;
+}
+
+.spec:hover .project-snapshot {
+  filter: brightness(1.1);
 }

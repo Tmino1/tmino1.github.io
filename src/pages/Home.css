@@ -5,7 +5,39 @@
 }
 
 .hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
   padding-block: var(--space-6);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+}
+
+.hero-photo {
+  flex-shrink: 0;
+  width: 160px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated-2);
+
+  @media (max-width: 1024px) {
+    width: 120px;
+  }
+}
+
+.hero-photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 13px;
 }
 
 .hero-tagline {

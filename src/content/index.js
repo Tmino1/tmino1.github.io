@@ -4,6 +4,7 @@ export const site = content.site
 export const about = content.about
 export const skills = content.skills
 export const projects = content.projects
+export const education = content.education
 export const experience = content.experience
 export const contact = content.contact
 

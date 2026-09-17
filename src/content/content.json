@@ -54,30 +54,82 @@
   ],
   "projects": [
     {
-      "slug": "open-spot-operator",
-      "name": "Open-Spot: Spot Operator",
-      "description": "The control-stack part of open-spot, DRONESLab's open-source alternative to ROS 2/Nav2 for Boston Dynamics Spot. It has two parts: a Godot 4 operator GUI that runs on a Steam Deck, and a Python control daemon on a Jetson Orin AGX. They talk over a custom UDP protocol with CRC-16 checks, and safety-critical commands are resent until acknowledged. Also includes a failsafe watchdog, e-stop paths isolated from the rest of the system, and plugins that run in separate processes so a crash can't take the robot down.",
-      "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
-      "links": {},
-      "featured": true
-    },
-    {
       "slug": "vision-inspect",
       "name": "VISION-Inspect",
-      "description": "An extension of DRONESLab's VISION infrastructure-inspection system for Spot. Instead of sampling at fixed waypoints, the robot decides when to capture based on LiDAR and a vision-language model (VLM), which makes inspection coverage more efficient. Includes a zero-shot transfer experiment: a 12B VLM is fine-tuned on general defect data while all culvert data is held out for testing.",
+      "description": "VISION-Inspect sends Spot out to inspect infrastructure like culverts and look for damage. Instead of stopping to take pictures on a fixed schedule, the robot uses its sensors and an AI vision model to decide what's worth a closer look. I'm also testing whether the model can find defects in kinds of structures it has never seen before.",
       "tags": ["Python", "VLM", "LiDAR", "Nav2"],
       "links": {},
-      "featured": false
+      "status": "active",
+      "dates": "Aug 2026 – Present",
+      "specs": {
+        "Platform": "Boston Dynamics Spot",
+        "Sensors": "LiDAR",
+        "Org": "DRONESLab"
+      }
+    },
+    {
+      "slug": "open-spot-operator",
+      "name": "Open-Spot: Spot Operator",
+      "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. It's designed to be safe first: if the connection drops or something crashes, the robot stops, and the emergency stop always works.",
+      "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
+      "links": {},
+      "status": "active",
+      "dates": "Jun 2026 – Present",
+      "specs": {
+        "Platform": "Boston Dynamics Spot",
+        "Hardware": "Steam Deck, Jetson Orin AGX",
+        "Org": "DRONESLab"
+      }
+    },
+    {
+      "slug": "lunabotics-rover",
+      "name": "NASA LunaBotics Rover",
+      "description": "UB's rover for NASA's LunaBotics competition, where university teams build robots that work on their own in simulated lunar terrain. I built its autonomy system, which lets the rover figure out where it is using its cameras, plan a path, and recover when it gets stuck, all without a driver. I led the autonomy subteam that took it from not working at all to ready for competition.",
+      "tags": ["ROS 2", "Nav2", "RTAB-Map", "Jetson Orin"],
+      "links": {},
+      "status": "complete",
+      "dates": "Sep 2025 – May 2026",
+      "specs": {
+        "Platform": "Lunar rover",
+        "Hardware": "Jetson Orin, ZED2i",
+        "Role": "Autonomy Lead",
+        "Org": "NASA LunaBotics"
+      }
+    },
+    {
+      "slug": "spacebulls-rover",
+      "name": "UB SpaceBulls Rover",
+      "description": "The rover built by UB SpaceBulls, the university's student robotics club. I worked on the software on its onboard hardware and built a simulated version of the rover in Gazebo, so the team could test changes on a computer before running them on the real robot. Along the way I went from leading one subteam to leading the whole project.",
+      "tags": ["ROS 2", "Gazebo", "Nav2", "RTAB-Map"],
+      "links": {},
+      "status": "complete",
+      "dates": "Sep 2024 – May 2026",
+      "specs": {
+        "Platform": "Rover",
+        "Role": "Team Lead → Project Lead",
+        "Org": "UB SpaceBulls"
+      }
     },
     {
       "slug": "catan-agent",
       "name": "Catan Agent",
-      "description": "A reinforcement learning agent for Settlers of Catan. A graph neural network encodes the board so the policy works across different board layouts. Training uses PPO, and opponent strength adjusts to the agent's win rate, which sped up convergence.",
+      "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
       "tags": ["RL", "GNN", "PPO", "Gymnasium"],
       "links": {},
-      "featured": false
+      "status": "complete",
+      "dates": "Spring 2026",
+      "specs": {
+        "Platform": "Simulation (Gymnasium)"
+      }
     }
   ],
+  "education": {
+    "degree": "B.S. Computer Science",
+    "minors": "Minor in Robotics and Math",
+    "school": "University at Buffalo",
+    "start": "2023-08",
+    "end": "2026-12"
+  },
   "experience": [
     {
       "role": "Undergraduate Researcher",
@@ -88,6 +140,26 @@
       "bullets": [
         "Extending the lab's published VISION infrastructure-inspection system for Boston Dynamics Spot with adaptive perception and defect detection that generalizes to new settings",
         "Built Open-Spot's Spot Operator, an open-source full-stack teleoperation and control framework that the lab's ongoing research runs on"
+      ]
+    },
+    {
+      "role": "Technical Advisor",
+      "org": "NASA LunaBotics",
+      "location": "Buffalo, NY",
+      "start": "2026-06",
+      "end": "Present",
+      "bullets": [
+        "Advise the incoming Autonomy Lead and subteam on navigation and SLAM architecture decisions"
+      ]
+    },
+    {
+      "role": "Technical Advisor",
+      "org": "UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2026-06",
+      "end": "Present",
+      "bullets": [
+        "Mentor subteam leads and keep the system architecture consistent between leadership changes"
       ]
     },
     {
@@ -102,27 +174,36 @@
       ]
     },
     {
-      "role": "Autonomy Lead → Technical Advisor",
+      "role": "Autonomy Lead",
       "org": "NASA LunaBotics",
       "location": "Buffalo, NY",
       "start": "2025-09",
-      "end": "Present",
+      "end": "2026-05",
       "bullets": [
         "Built an autonomous navigation stack for a lunar rover on Jetson Orin, integrating RTAB-Map visual SLAM, Nav2 path planning, and EKF fusion of ZED2i stereo camera and odometry data",
         "Fixed TF frame conflicts and wrote a custom recovery behavior tree so the rover could reliably localize and drive over unstructured terrain",
-        "As Lead (through May 2026), took the system from non-functional to competition-ready under a hard SAR deadline; now advise the new lead on navigation and SLAM architecture"
+        "Led the subteam's integration effort, taking the system from non-functional to competition-ready under a hard SAR deadline"
       ]
     },
     {
-      "role": "Team Lead → Project Lead → Technical Advisor",
+      "role": "Project Lead",
       "org": "UB SpaceBulls Robotics Club",
       "location": "Buffalo, NY",
-      "start": "2023-09",
-      "end": "Present",
+      "start": "2025-09",
+      "end": "2026-05",
       "bullets": [
-        "Developed embedded systems software and a rover simulation prototype in ROS and Gazebo, cutting system latency by 30% and improving performance by 15%",
-        "Went from leading a 10-engineer subteam to leading 15 engineers across 4 subteams as Project Lead, hitting key milestones 20% ahead of schedule",
-        "Now mentor subteam leads as Technical Advisor and keep the system architecture consistent between leadership changes"
+        "Led 15 engineers across 4 subteams, hitting key milestones 20% ahead of schedule"
+      ]
+    },
+    {
+      "role": "Team Lead",
+      "org": "UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2024-09",
+      "end": "2025-05",
+      "bullets": [
+        "Led a 10-engineer subteam",
+        "Developed embedded systems software and a rover simulation prototype in ROS and Gazebo, cutting system latency by 30% and improving performance by 15%"
       ]
     }
   ],
