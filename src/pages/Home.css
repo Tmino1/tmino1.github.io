@@ -86,12 +86,6 @@
   color: var(--text-secondary);
 }
 
-.about-looking {
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
 .about-links {
   display: flex;
   flex-wrap: wrap;

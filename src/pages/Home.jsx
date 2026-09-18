@@ -36,7 +36,7 @@ export default function Home() {
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-            {about.looking && <p className="about-looking">{about.looking}</p>}
+            {about.looking && <p>{about.looking}</p>}
             <div className="about-links">
               {contact.map(({ label, url, icon }) => (
                 <a key={label} href={url} target="_blank" rel="noreferrer">

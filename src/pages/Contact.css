@@ -1,13 +1,93 @@
-.contact-panel {
-  margin-top: var(--space-4);
-  max-width: 560px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+.contact {
+  max-width: 640px;
 }
 
-.contact-links {
+/* the same dot-and-caps idiom a project uses for its status */
+.contact-status {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.contact-status::before {
+  content: '● ';
+}
+
+.contact-lead {
+  margin-top: var(--space-3);
+}
+
+/* the projects page spec sheet, applied to a person */
+.contact-table {
+  margin: var(--space-5) 0 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.4;
+  border-bottom: 1px dashed var(--border);
+}
+
+.contact-table div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: 9px;
+  border-top: 1px dashed var(--border);
+}
+
+.contact-table dt {
+  padding-top: 2px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-table dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--text);
+}
+
+.contact-table a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.contact-table a:hover {
+  color: var(--accent-strong);
+}
+
+.contact-copy {
+  padding: 2px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.contact-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+.contact-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
+  margin-top: var(--space-5);
 }

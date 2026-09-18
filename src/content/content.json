@@ -4,7 +4,9 @@
     "title": "Travis Minor — Roboticist",
     "tagline": "I build autonomy for robots that have to fail safely.",
     "email": "travisminor10@gmail.com",
-    "location": "Buffalo, NY"
+    "location": "Buffalo, NY",
+    "status": "Open to summer 2027 internships",
+    "resume": ""
   },
   "about": {
     "heading": "About",
@@ -12,12 +14,13 @@
       "I'm a Computer Science student at the University at Buffalo who builds software for robots that have to work outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
       "Right now I'm at DRONESLab, teaching Boston Dynamics' Spot to inspect infrastructure on its own. Before that, I led autonomy for UB's NASA LunaBotics rover."
     ],
-    "looking": "",
+    "looking": "I finish my B.S. in December 2026 and plan to continue into an M.S. in Engineering Sciences (Robotics) at UB. I'm looking for a summer 2027 robotics internship — navigation, SLAM and safety-critical control on robots that run outside the lab.",
     "profile": {
       "Based in": "Buffalo, NY",
       "Studying": "B.S. Computer Science, University at Buffalo",
       "Minors": "Robotics, Math",
       "Graduating": "Dec 2026",
+      "Next": "M.S. Engineering Sciences (Robotics), applying for Spring 2027",
       "Currently": "Undergraduate Researcher, DRONESLab",
       "Focus": "Navigation, SLAM, teleoperation, safety-critical control"
     }

@@ -22,12 +22,15 @@ function Milestone({ date, label, detail }) {
 }
 
 export default function Experience() {
-  const { degree, minors, school, start, end } = education
+  const { degree, minors, school, start, end, next } = education
 
   return (
     <div className="experience">
       <h1>Experience</h1>
       <div className="timeline">
+        {next && (
+          <Milestone date={next.start} label={`Continuing into — ${next.degree}`} detail={next.school} />
+        )}
         <Milestone date={end} label={`Graduating — ${degree}`} detail={`${minors}, ${school}`} />
         {experience.map(({ role, org, location, start, end, bullets }) => (
           <div key={`${role}-${org}`} className="timeline-item">

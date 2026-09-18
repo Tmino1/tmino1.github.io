@@ -25,3 +25,6 @@ dist-ssr
 
 # camera raws (keep originals out of the deployed site)
 *.CR2
+
+# résumé kept out of the deploy until it is ready to publish
+/public/Travis_Minor_Resume.pdf
