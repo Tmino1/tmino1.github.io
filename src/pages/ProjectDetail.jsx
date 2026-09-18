@@ -21,14 +21,17 @@ export default function ProjectDetail() {
 
   return (
     <article className="project-detail">
-      <Link to="/projects" className="project-detail-back">
-        ← All projects
-      </Link>
-
       <header className="project-detail-header">
-        <ProjectId index={index} />
-        <h1>{name}</h1>
-        <ProjectStatus status={status} />
+        <div className="project-detail-title">
+          <Link to="/projects" className="project-detail-back">
+            ← All projects
+          </Link>
+          <h1>{name}</h1>
+        </div>
+        <div className="project-detail-meta">
+          <ProjectId index={index} />
+          <ProjectStatus status={status} />
+        </div>
       </header>
 
       <ProjectGallery images={images} className="project-detail-snapshot" />

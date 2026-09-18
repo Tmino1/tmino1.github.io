@@ -16,6 +16,10 @@
   --bg-elevated-2: #282828; /* nested / hovered surface */
   --selection: #404040;
 
+  /* --- dot grid: faint "graph paper" behind the screen --- */
+  --grid-dot: rgba(255, 255, 255, 0.07);
+  --grid-size: 28px; /* ruled lines and column edges are laid out on this */
+
   /* --- text --- */
   --text: #bbbbbb;
   --text-secondary: #8e8e8e;

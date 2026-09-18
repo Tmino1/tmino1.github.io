@@ -34,20 +34,50 @@
 }
 
 .shell-content {
+  --gutter: var(--space-5);
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1200px;
+  /* the column inside the gutters is a whole number of grid cells plus 1px, so
+     a 1px border at either edge (drawn just inside it) is centered on a dot
+     column; the spare pixels go to the margins */
+  width: calc(
+    round(down, min(100%, 1200px) - 2 * var(--gutter) - 1px, var(--grid-size)) +
+      1px + 2 * var(--gutter)
+  );
   margin-inline: auto;
-  padding-inline: var(--space-5);
+  padding-inline: var(--gutter);
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 0;
 
   @media (max-width: 480px) {
-    padding-inline: var(--space-4);
+    --gutter: var(--space-4);
   }
+}
+
+/* dot grid "graph paper". it lives on the content column and bleeds out to
+   the shell's edges (clipped by its overflow), offset by a whole number of
+   cells so a dot column sits exactly on the content's left edge. dots are
+   centered half a pixel in, on the middle of a 1px line drawn at that edge.
+   useGridSnap puts the horizontal rules on the rows. */
+.shell-content::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--gutter) - var(--grid-size) * 80);
+  right: calc(var(--gutter) - var(--grid-size) * 80);
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle,
+    var(--grid-dot) 1px,
+    transparent 1.5px
+  );
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: calc(0.5px - var(--grid-size) / 2)
+    calc(0.5px - var(--grid-size) / 2);
 }
 
 .shell-main {

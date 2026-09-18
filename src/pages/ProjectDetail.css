@@ -12,20 +12,29 @@
 }
 
 .project-detail-header {
-  /* number · title · status on one line, wrapping on narrow screens */
+  margin-bottom: var(--space-5);
+}
+
+/* back link and title on one line, the title wrapping below on narrow screens */
+.project-detail-title {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: var(--space-5);
-  row-gap: var(--space-2);
-  margin-block: var(--space-4) var(--space-5);
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--border);
+  gap: var(--space-2) var(--space-5);
 
   h1 {
-    flex: 1 1 auto;
     margin: var(--space-2) 0;
   }
+}
+
+/* number · status strip between two rules, like the spec sheet header */
+.project-detail-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  border-block: 1px solid var(--border);
 }
 
 .project-detail-snapshot {
@@ -45,8 +54,11 @@ img.project-snapshot.project-detail-snapshot {
 
 .project-detail-body {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: var(--space-7);
+  /* roughly 1.6 : 1, with the split on dot columns like the projects spec */
+  grid-template-columns:
+    calc(round(down, (100% - var(--grid-size) * 2) * 0.615, var(--grid-size)) + 1px)
+    minmax(0, 1fr);
+  gap: calc(var(--grid-size) * 2 - 1px);
   margin-top: var(--space-6);
 
   @media (max-width: 860px) {

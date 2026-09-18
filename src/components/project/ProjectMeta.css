@@ -125,7 +125,7 @@ img.project-snapshot {
   display: grid;
   grid-template-columns: 90px minmax(0, 1fr);
   gap: var(--space-3);
-  padding-block: 7px;
+  padding-block: 4px;
   border-top: 1px dashed var(--border);
 }
 
