@@ -2,7 +2,7 @@
   "site": {
     "name": "Travis Minor",
     "title": "Travis Minor — Roboticist",
-    "tagline": "I build autonomy and control software for real robots.",
+    "tagline": "I build autonomy for robots that have to fail safely.",
     "email": "travisminor10@gmail.com",
     "location": "Buffalo, NY"
   },
