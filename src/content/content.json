@@ -219,22 +219,12 @@
     },
     {
       "role": "Technical Advisor",
-      "org": "NASA LunaBotics",
+      "org": "NASA LunaBotics & UB SpaceBulls Robotics Club",
       "location": "Buffalo, NY",
       "start": "2026-06",
       "end": "Present",
       "bullets": [
-        "Advise the incoming Autonomy Lead and subteam on navigation and SLAM architecture decisions"
-      ]
-    },
-    {
-      "role": "Technical Advisor",
-      "org": "UB SpaceBulls Robotics Club",
-      "location": "Buffalo, NY",
-      "start": "2026-06",
-      "end": "Present",
-      "bullets": [
-        "Mentor subteam leads and keep the system architecture consistent between leadership changes"
+        "Advise the incoming LunaBotics and SpaceBulls leads on navigation, SLAM and system architecture, keeping designs consistent between leadership changes"
       ]
     },
     {
