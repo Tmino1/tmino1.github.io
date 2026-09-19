@@ -70,7 +70,8 @@
       "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
       "links": { "github": "https://github.com/Tmino1/fly-mhw" },
       "captions": {
-        "architecture.svg": "The control loop: the fly-brain network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet."
+        "architecture.svg": "The control loop: the fly-brain network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet.",
+        "gameplay.jpg": "A recorded frame mid-hunt: the connectome brain observes exactly this pixel feed, nothing else — no privileged game state, per Design Principle 4."
       },
       "status": "prototype",
       "dates": "Sep 2026 – Present",
