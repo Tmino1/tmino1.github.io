@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="fly-mhw control loop: a fly-brain network sends actions through a virtual gamepad into Monster Hunter World, and the Lua state reader and screen capture feed observations and reward back through MHWEnv">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="fly-mhw control loop: a fly-brain network sends actions through a virtual gamepad into Monster Hunter World, and a Lua state reader and screen capture close the loop back into the brain - confirmed live. A separate imitation-learning stage trains on recorded demo hunts; its weights aren't loaded back into the live brain yet.">
   <style>
     .box { fill: #202020; stroke: #2e2e2e; stroke-width: 1.5; rx: 10; }
     .box-next { fill: #191919; stroke: #3d3839; stroke-width: 1.5; stroke-dasharray: 6 5; rx: 10; }
@@ -19,7 +19,7 @@
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="1200" height="620" fill="#191919" />
+  <rect x="0" y="0" width="1200" height="675" fill="#191919" />
   <text x="56" y="52" class="title">FLY-MHW · CONTROL LOOP</text>
 
   <!-- top row: brain to game -->
@@ -49,35 +49,42 @@
   <text x="626" y="138" text-anchor="middle" class="edge">press</text>
 
   <!-- bottom row: game back to brain -->
-  <rect class="box" rx="10" x="912" y="380" width="232" height="124" />
-  <text x="1028" y="418" text-anchor="middle" class="name">Sensing</text>
-  <text x="1028" y="442" text-anchor="middle" class="sub">state_reader.lua</text>
-  <text x="1028" y="462" text-anchor="middle" class="sub">(LuaEngine),</text>
-  <text x="1028" y="482" text-anchor="middle" class="sub">grim capture</text>
+  <rect class="box" rx="10" x="912" y="430" width="232" height="124" />
+  <text x="1028" y="468" text-anchor="middle" class="name">Sensing</text>
+  <text x="1028" y="492" text-anchor="middle" class="sub">state_reader.lua</text>
+  <text x="1028" y="512" text-anchor="middle" class="sub">(LuaEngine),</text>
+  <text x="1028" y="532" text-anchor="middle" class="sub">grim capture</text>
 
-  <rect class="box" rx="10" x="484" y="380" width="242" height="124" />
-  <text x="605" y="418" text-anchor="middle" class="name">MHWEnv</text>
-  <text x="605" y="442" text-anchor="middle" class="sub">observation,</text>
-  <text x="605" y="462" text-anchor="middle" class="sub">reward.py,</text>
-  <text x="605" y="482" text-anchor="middle" class="sub">episode bounds</text>
+  <rect class="box" rx="10" x="484" y="430" width="242" height="124" />
+  <text x="605" y="468" text-anchor="middle" class="name">MHWEnv</text>
+  <text x="605" y="492" text-anchor="middle" class="sub">observation,</text>
+  <text x="605" y="512" text-anchor="middle" class="sub">reward.py,</text>
+  <text x="605" y="532" text-anchor="middle" class="sub">episode bounds</text>
 
-  <rect class="box-next" rx="10" x="56" y="380" width="242" height="124" />
-  <text x="177" y="424" text-anchor="middle" class="name">Training</text>
-  <text x="177" y="450" text-anchor="middle" class="sub">trains gains and</text>
-  <text x="177" y="470" text-anchor="middle" class="sub">readout only</text>
+  <rect class="box" rx="10" x="56" y="430" width="242" height="124" />
+  <text x="177" y="468" text-anchor="middle" class="name">Training</text>
+  <text x="177" y="492" text-anchor="middle" class="sub">behavior cloning,</text>
+  <text x="177" y="512" text-anchor="middle" class="sub">trains gains and</text>
+  <text x="177" y="532" text-anchor="middle" class="sub">readout only</text>
 
   <!-- game down into sensing -->
-  <path class="wire" d="M 1053 204 L 1053 372" />
-  <text x="1069" y="296" class="edge">hp, pos, quest</text>
+  <path class="wire" d="M 1053 204 L 1053 422" />
+  <text x="1069" y="320" class="edge">hp, pos, quest</text>
 
-  <line class="wire" x1="904" y1="442" x2="734" y2="442" />
-  <text x="819" y="426" text-anchor="middle" class="edge">snapshot</text>
+  <line class="wire" x1="904" y1="492" x2="734" y2="492" />
+  <text x="819" y="476" text-anchor="middle" class="edge">snapshot</text>
 
-  <line class="wire-next" x1="476" y1="442" x2="306" y2="442" />
-  <text x="391" y="426" text-anchor="middle" class="edge">obs, reward</text>
+  <line class="wire" x1="476" y1="492" x2="306" y2="492" />
+  <text x="391" y="476" text-anchor="middle" class="edge">recorded demos</text>
 
-  <path class="wire-next" d="M 177 372 L 177 212" />
-  <text x="193" y="296" class="edge">weights</text>
+  <!-- live inference loop closing: confirmed running end to end via
+       scripts/run_brain_policy.py, a real quest, 150 steps, zero errors -->
+  <path class="wire" d="M 605 430 L 605 264 L 230 264 L 230 212" />
+  <text x="418" y="250" text-anchor="middle" class="edge">pixels (live, confirmed)</text>
 
-  <text x="56" y="572" class="sub">solid = working today · dashed = not built yet</text>
+  <path class="wire-next" d="M 177 422 L 177 212" />
+  <text x="193" y="320" class="edge">weights (not loaded</text>
+  <text x="193" y="336" class="edge">back in yet)</text>
+
+  <text x="56" y="620" class="sub">solid = working today, confirmed live · dashed = not wired up yet</text>
 </svg>
