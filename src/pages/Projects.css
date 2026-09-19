@@ -1,47 +1,126 @@
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-  gap: var(--space-5);
-  margin-top: var(--space-4);
+.spec-sheet {
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--border);
 }
 
-.project-card {
+.spec-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: 0; /* one grid row tall; useGridSnap centers the text in it */
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.spec {
+  position: relative;
+  display: grid;
+  /* column edges on dot columns: 2 cells, a gap, half the rest, a gap, the rest.
+     columns are n cells + 1px and gaps 1px short, so borders on either side of
+     a column are centered on dots */
+  grid-template-columns:
+    calc(var(--grid-size) * 2 + 1px)
+    calc(round(down, (100% - var(--grid-size) * 4) / 2, var(--grid-size)) + 1px)
+    minmax(0, 1fr);
+  gap: calc(var(--grid-size) - 1px);
+  padding-block: var(--grid-size);
+  border-bottom: 1px solid var(--border);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.spec:has(.spec-link:focus-visible) {
+  outline: 2px solid var(--accent-border);
+  outline-offset: 4px;
+}
+
+.spec-body {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.project-image {
+.spec-body h2 {
+  margin: 0;
+}
+
+.spec-link {
+  text-decoration: none;
+  outline: none;
+  transition: color 0.15s ease;
+}
+
+/* stretch the title link over the whole row so any click opens the project */
+.spec-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.spec-arrow {
+  display: inline-block;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.spec:hover .spec-link {
+  color: var(--accent-strong);
+}
+
+.spec:hover .spec-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.spec .project-links {
+  position: relative;
+  z-index: 1;
+}
+
+.spec-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* the title link is stretched over the whole row, so the picture must not
+   intercept clicks: its hover filter makes a stacking context that would
+   otherwise paint it above that overlay and swallow them */
+.spec-side .project-figure {
+  pointer-events: none;
+}
+
+/* every row gets the same image footprint, whatever shape the photo is, so the
+   spec lines below end flush with the picture instead of running wider */
+.spec-side .project-snapshot {
   width: 100%;
+  max-width: none;
+  max-height: none;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: var(--radius-md);
   background: var(--bg-elevated-2);
+  transition: filter 0.15s ease;
 }
 
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+/* a diagram is fitted into that box rather than cropped, so none of it is cut.
+   The leftover space is filled with the page background, so the diagram reads
+   as sitting on the page rather than inside a lighter panel. */
+.spec-side img.project-snapshot[src$='.svg'] {
+  object-fit: contain;
+  background: var(--bg);
 }
 
-.project-links {
-  display: flex;
-  gap: var(--space-4);
-  margin-top: auto;
-  padding-top: var(--space-2);
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--accent);
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 14px;
-}
-
-.project-link:hover {
-  color: var(--accent-strong);
+.spec:hover .project-snapshot {
+  filter: brightness(1.1);
 }

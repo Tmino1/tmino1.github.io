@@ -1,0 +1,143 @@
+.project-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.project-status {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.project-status::before {
+  content: '● ';
+}
+
+.project-status--active,
+.project-status--in-development {
+  color: var(--accent);
+}
+
+.project-status--prototype {
+  color: var(--red);
+}
+
+.project-status--testing {
+  color: var(--cyan);
+}
+
+.project-status--public-alpha {
+  color: var(--bright-yellow);
+}
+
+.project-status--research {
+  color: var(--magenta);
+}
+
+.project-status--deployed,
+.project-status--maintained,
+.project-status--complete {
+  color: var(--green);
+}
+
+.project-status--paused {
+  color: var(--text-secondary);
+}
+
+/* planned / archived keep the muted default */
+.project-status--archived::before {
+  content: '○ ';
+}
+
+.project-figure {
+  margin: 0;
+}
+
+.project-figure figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* the image keeps its own shape, so there are never letterbox bars beside it */
+img.project-snapshot {
+  display: block;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: var(--radius-sm);
+}
+
+.project-snapshot--placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* same pill as the project page's back / prev / next links */
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.project-links a:hover {
+  color: var(--accent-strong);
+  background: var(--bg-elevated-2);
+  border-color: var(--accent);
+}
+
+.project-specs {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.project-specs div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: 4px;
+  border-top: 1px dashed var(--border);
+}
+
+.project-specs dt {
+  padding-top: 2px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.project-specs dd {
+  margin: 0;
+  color: var(--text);
+}

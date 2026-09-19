@@ -4,30 +4,48 @@
   box-sizing: border-box;
 }
 
+::selection {
+  color: var(--text);
+  background: var(--selection);
+}
+
 :root {
-  /* --- surfaces: muted, slightly blue near-black --- */
-  --bg: #0b0f11; /* sampled from the user's own desktop colorscheme */
-  --bg-elevated: #141a1d; /* panel/card surface, one step up */
-  --bg-elevated-2: #1b2226; /* nested / hovered surface */
+  /* --- surfaces: neutral near-black, from the user's terminal colorscheme --- */
+  --bg: #191919;
+  --bg-elevated: #202020; /* panel/card surface, one step up */
+  --bg-elevated-2: #282828; /* nested / hovered surface */
+  --selection: #404040;
+
+  /* --- dot grid: faint "graph paper" behind the screen --- */
+  --grid-dot: rgba(255, 255, 255, 0.07);
+  --grid-size: 28px; /* ruled lines and column edges are laid out on this */
 
   /* --- text --- */
-  --text: #e7ebed;
-  --text-secondary: #a5afb4;
-  --text-muted: #6c7579;
+  --text: #bbbbbb;
+  --text-secondary: #8e8e8e;
+  --text-muted: #6b6b6b;
 
-  /* --- accent: muted slate blue --- */
-  --accent: #8aa8bd;
-  --accent-strong: #a7c1d1;
-  --accent-bg: rgba(138, 168, 189, 0.12);
-  --accent-border: rgba(138, 168, 189, 0.4);
+  /* --- accent: terminal blue / bright blue --- */
+  --accent: #6099c0;
+  --accent-strong: #61abda;
+  --accent-bg: rgba(96, 153, 192, 0.12);
+  --accent-border: rgba(96, 153, 192, 0.4);
+
+  /* --- terminal ansi colors, used for status indicators --- */
+  --green: #819b69;
+  --cyan: #66a5ad;
+  --magenta: #b279a7;
+  --yellow: #b77e64;
+  --red: #de6e7c;
+  --bright-yellow: #d68c67; /* the scheme's closest color to Spot's yellow */
 
   /* --- borders / shadow --- */
-  --border: #262e33;
+  --border: #2e2e2e;
   --border-soft: rgba(255, 255, 255, 0.06);
   --shadow:
     rgba(0, 0, 0, 0.45) 0 12px 28px -8px, rgba(0, 0, 0, 0.3) 0 4px 10px -4px;
   --glow-accent:
-    0 0 0 1px var(--accent-border), 0 0 24px -6px rgba(138, 168, 189, 0.35);
+    0 0 0 1px var(--accent-border), 0 0 24px -6px rgba(96, 153, 192, 0.35);
 
   /* --- radius scale (bento / pill language) --- */
   --radius-sm: 8px;

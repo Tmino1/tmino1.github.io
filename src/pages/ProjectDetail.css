@@ -1,0 +1,102 @@
+.project-detail-back,
+.project-detail-nav a {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.project-detail-back:hover,
+.project-detail-nav a:hover {
+  color: var(--accent-strong);
+}
+
+.project-detail-header {
+  margin-bottom: var(--space-5);
+}
+
+/* back link and title on one line, the title wrapping below on narrow screens */
+.project-detail-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+
+  h1 {
+    margin: var(--space-2) 0;
+  }
+}
+
+/* number · status strip between two rules, like the spec sheet header */
+.project-detail-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  border-block: 1px solid var(--border);
+}
+
+.project-detail-snapshot {
+  aspect-ratio: 21 / 9;
+
+  @media (max-width: 860px) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* a lone image shows at its own shape instead of a fixed widescreen frame */
+img.project-snapshot.project-detail-snapshot {
+  aspect-ratio: auto;
+  height: auto;
+  max-height: 75vh;
+}
+
+.project-detail-body {
+  display: grid;
+  /* roughly 1.6 : 1, with the split on dot columns like the projects spec */
+  grid-template-columns:
+    calc(round(down, (100% - var(--grid-size) * 2) * 0.615, var(--grid-size)) + 1px)
+    minmax(0, 1fr);
+  gap: calc(var(--grid-size) * 2 - 1px);
+  margin-top: var(--space-6);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+.project-detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.project-detail-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
+  /* cancel most of .shell-main's bottom padding so the gap below matches the gap above */
+  margin-bottom: calc(var(--space-4) - var(--space-8));
+  border-top: 1px solid var(--border);
+}
+
+.project-detail-back,
+.project-detail-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.project-detail-back:hover,
+.project-detail-nav a:hover {
+  background: var(--bg-elevated-2);
+  border-color: var(--accent);
+}

@@ -1,11 +1,9 @@
 .panel {
-  --tilt: 0deg;
   border-radius: var(--radius-lg);
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   padding: var(--space-5);
-  transform: rotate(var(--tilt));
 
   @media (max-width: 480px) {
     padding: var(--space-4);
@@ -20,41 +18,7 @@
 }
 
 .panel--hoverable:hover {
-  transform: rotate(var(--tilt)) translateY(-4px) scale(1.015);
+  transform: translateY(-4px) scale(1.015);
   border-color: var(--accent-border);
   box-shadow: var(--shadow), var(--glow-accent);
-}
-
-.panel--featured {
-  grid-column: span 2;
-  @media (max-width: 640px) {
-    grid-column: span 1;
-  }
-}
-
-/* --- wacky widget shapes: uneven blob corners + a slight tilt --- */
-
-.panel--shape-a {
-  --tilt: -1.1deg;
-  border-radius: 46px 14px 46px 14px;
-}
-
-.panel--shape-b {
-  --tilt: 0.9deg;
-  border-radius: 14px 46px 14px 46px;
-}
-
-.panel--shape-c {
-  --tilt: -0.7deg;
-  border-radius: 58px 58px 12px 58px;
-}
-
-.panel--shape-d {
-  --tilt: 1.3deg;
-  border-radius: 12px 58px 58px 58px;
-}
-
-.panel--shape-e {
-  --tilt: -0.5deg;
-  border-radius: 62% 38% 42% 58% / 46% 42% 58% 54%;
 }

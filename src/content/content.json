@@ -2,104 +2,282 @@
   "site": {
     "name": "Travis Minor",
     "title": "Travis Minor — Roboticist",
-    "tagline": "I build fast, well-crafted robotics software.",
+    "tagline": "I build autonomy for robots that have to fail safely.",
     "email": "travisminor10@gmail.com",
-    "location": "United States"
+    "location": "Buffalo, NY",
+    "status": "Open to summer 2027 internships",
+    "resume": ""
   },
   "about": {
     "heading": "About",
-    "summary": "I'm a roboticist who enjoys turning ideas into clean, working systems — from embedded control software to the interfaces built on top of them.",
-    "highlights": [
-      "Focused on readable, well-tested code",
-      "Comfortable across the full stack",
-      "Always shipping small side projects"
-    ]
+    "paragraphs": [
+      "I'm a Computer Science student at the University at Buffalo who builds software for robots that have to work outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
+      "Right now I'm at DRONESLab, teaching Boston Dynamics' Spot to inspect infrastructure on its own. Before that, I led autonomy for UB's NASA LunaBotics rover."
+    ],
+    "looking": "I finish my B.S. in December 2026 and plan to continue into an M.S. in Engineering Sciences (Robotics) at UB. I'm looking for a summer 2027 robotics internship — navigation, SLAM and safety-critical control on robots that run outside the lab.",
+    "profile": {
+      "Based in": "Buffalo, NY",
+      "Studying": "B.S. Computer Science, University at Buffalo",
+      "Minors": "Robotics, Math",
+      "Graduating": "Dec 2026",
+      "Next": "M.S. Engineering Sciences (Robotics), applying for Spring 2027",
+      "Currently": "Undergraduate Researcher, DRONESLab",
+      "Focus": "Navigation, SLAM, teleoperation, safety-critical control"
+    }
   },
   "skills": [
     {
       "group": "Languages",
       "items": [
-        { "name": "JavaScript", "level": "advanced" },
-        { "name": "TypeScript", "level": "advanced" },
-        { "name": "Python", "level": "intermediate" }
+        { "name": "Python", "level": "advanced" },
+        { "name": "C++", "level": "intermediate" },
+        { "name": "C", "level": "intermediate" },
+        { "name": "Nix", "level": "intermediate" },
+        { "name": "Bash", "level": "intermediate" }
       ]
     },
     {
-      "group": "Frameworks",
+      "group": "Robotics",
       "items": [
-        { "name": "React", "level": "advanced" },
-        { "name": "Node.js", "level": "advanced" }
+        { "name": "ROS 2", "level": "advanced" },
+        { "name": "Nav2", "level": "advanced" },
+        { "name": "RTAB-Map", "level": "advanced" },
+        { "name": "micro-ROS", "level": "intermediate" }
       ]
     },
     {
-      "group": "Tools",
+      "group": "Simulation & CAD",
       "items": [
-        { "name": "Git", "level": "advanced" },
+        { "name": "Gazebo", "level": "intermediate" },
+        { "name": "Isaac Sim", "level": "beginner" },
+        { "name": "Fusion 360", "level": "intermediate" }
+      ]
+    },
+    {
+      "group": "Systems",
+      "items": [
+        { "name": "Linux (Ubuntu, NixOS)", "level": "advanced" },
         { "name": "Docker", "level": "intermediate" }
       ]
     }
   ],
   "projects": [
     {
-      "slug": "vision-inspect",
-      "name": "VISION-Inspect",
-      "description": "Autonomous visual inspection of infrastructure with a quadruped robot — navigating to sites like culverts and drainage structures with an onboard sensor payload, validated against an RTK/GPS reference station for ground-truth positioning.",
-      "tags": ["Robotics", "Computer Vision"],
-      "image": "/projects/vision-inspect.jpg",
-      "links": {},
-      "featured": true
-    },
-    {
       "slug": "fly-mhw",
-      "name": "fly-mhw",
-      "description": "Teaching a fruit-fly brain connectome to hunt in Monster Hunter World. A recurrent network built on the real Janelia MaleCNS wiring (topology and synapse sign fixed, only a small trainable surface of gains/biases/encoder/readout ever trained) drives a real game through reverse-engineered memory reads and a virtual gamepad — bootstrapped via imitation learning from recorded hunts, with RL fine-tuning next.",
-      "tags": ["Python", "PyTorch", "Lua", "Reinforcement Learning"],
-      "image": "/projects/fly-mhw.jpg",
-      "links": {
-        "source": "https://github.com/Tmino1/fly-mhw"
+      "order": 7,
+      "name": "Fly MHW",
+      "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon, one of its hardest monsters. The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
+      "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
+      "links": { "github": "https://github.com/Tmino1/fly-mhw" },
+      "captions": {
+        "architecture.svg": "The control loop: the fly-brain network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet."
       },
-      "featured": true
+      "status": "prototype",
+      "dates": "Sep 2026 – Present",
+      "specs": {
+        "Platform": "Monster Hunter World (PC)",
+        "Target": "Great Jagras, Great Sword",
+        "Software": "LuaEngine, evdev virtual gamepad"
+      }
     },
     {
-      "slug": "project-one",
-      "name": "Project One",
-      "description": "A short, punchy description of what this project does and why it's interesting.",
-      "tags": ["React", "Vite", "Node.js"],
-      "image": "/projects/project-one.png",
-      "links": {
-        "live": "https://example.com",
-        "source": "https://github.com/tmino1/project-one"
+      "slug": "go2-ros2-sdk",
+      "order": 3,
+      "name": "Go2 ROS 2 SDK",
+      "description": "My fork of the open-source ROS 2 SDK for Unitree's Go2 robot dog. It now runs directly on the robot's own onboard computer instead of needing a separate one, using a reproducible Nix setup. I tuned the navigation so the robot moves slowly and carefully, and fixed bugs in the lidar pipeline that were creating phantom obstacles, merging distinct map points together and wasting CPU. A staged smoke test checks every change before it runs on the real robot.",
+      "tags": ["ROS 2", "Nav2", "Python", "Nix", "LiDAR"],
+      "links": { "github": "https://github.com/Tmino1/go2_ros2_sdk" },
+      "captions": {
+        "01-go2.png": "Onboard lidar point cloud in RViz, colored by height, with the Go2's model in the corridor it just mapped.",
+        "02-supervisor-abort.png": "Costmap replay of a run: the first plan (blue) against the actual track (green), stopping short of the goal footprint."
       },
-      "featured": true
+      "status": "maintained",
+      "dates": "Sep 2026 – Present",
+      "specs": {
+        "Platform": "Unitree Go2",
+        "Hardware": "Onboard Jetson",
+        "Software": "ROS 2 Humble, slam_toolbox"
+      }
     },
     {
-      "slug": "project-two",
-      "name": "Project Two",
-      "description": "Another project worth showing off — swap this copy for the real thing.",
-      "tags": ["Python"],
-      "image": "/projects/project-two.png",
+      "slug": "vision-inspect",
+      "order": 2,
+      "name": "VISION-Inspect",
+      "description": "VISION-Inspect sends Spot out to inspect infrastructure like culverts and look for damage. Instead of stopping to take pictures on a fixed schedule, the robot uses its sensors and an AI vision model to decide what's worth a closer look. I'm also testing whether the model can find defects in kinds of structures it has never seen before.",
+      "tags": ["Python", "VLM", "LiDAR", "Nav2"],
       "links": {
-        "source": "https://github.com/tmino1/project-two"
+        "github": "",
+        "live": { "href": "https://droneslab.github.io/vision/", "label": "VISION v1" }
       },
-      "featured": false
+      "captions": {
+        "01-culvert-inspection.jpg": "Spot approaching a culvert to inspect, with an RTK GPS base station staged nearby for ground-truth positioning."
+      },
+      "status": "active",
+      "dates": "Aug 2026 – Present",
+      "specs": {
+        "Platform": "Boston Dynamics Spot",
+        "Sensors": "LiDAR",
+        "Org": "DRONESLab"
+      }
+    },
+    {
+      "slug": "open-spot-operator",
+      "order": 1,
+      "name": "Open-Spot: Spot Operator",
+      "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. It's designed to be safe first: if the connection drops or something crashes, the robot stops, and the emergency stop always works.",
+      "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
+      "links": { "github": "https://droneslab.github.io/OpenSpot/" },
+      "captions": {
+        "openspot-payload.webp": "Modular sensor payload for Spot: Jetson enclosure, GPS antenna, IMU and long-range WiFi."
+      },
+      "status": "public-alpha",
+      "dates": "Jun 2026 – Present",
+      "specs": {
+        "Platform": "Boston Dynamics Spot",
+        "Hardware": "Steam Deck, Jetson Orin AGX",
+        "Org": "DRONESLab"
+      }
+    },
+    {
+      "slug": "lunabotics-rover",
+      "order": 4,
+      "name": "NASA LunaBotics Rover",
+      "description": "UB's rover for NASA's LunaBotics competition, where university teams build robots that work on their own in simulated lunar terrain. I built its autonomy system, which lets the rover figure out where it is using its cameras, plan a path, and recover when it gets stuck, all without a driver. I led the autonomy subteam that took it from not working at all to ready for competition.",
+      "tags": ["ROS 2", "Nav2", "RTAB-Map", "Jetson Orin"],
+      "links": { "github": "" },
+      "captions": {
+        "img_3521.jpg": "The rover driving through regolith simulant in the competition arena.",
+        "img_3443.jpg": "Staged before a run at the 2026 UCF Lunabotics competition.",
+        "img_3499.jpg": "Mission control: drive and drum controls, live camera feeds and telemetry over WebSockets."
+      },
+      "images": [
+        "/projects/lunabotics-rover/img_3521.jpg",
+        "/projects/lunabotics-rover/img_3443.jpg",
+        "/projects/lunabotics-rover/img_3499.jpg"
+      ],
+      "status": "complete",
+      "dates": "Sep 2025 – May 2026",
+      "specs": {
+        "Platform": "Lunar rover",
+        "Hardware": "Jetson Orin, ZED2i",
+        "Role": "Autonomy Lead",
+        "Org": "NASA LunaBotics"
+      }
+    },
+    {
+      "slug": "spacebulls-rover",
+      "order": 5,
+      "name": "UB SpaceBulls Rover",
+      "description": "The rover built by UB SpaceBulls, the university's student robotics club. I worked on the software on its onboard hardware and built a simulated version of the rover in Gazebo, so the team could test changes on a computer before running them on the real robot. Along the way I went from leading one subteam to leading the whole project.",
+      "tags": ["ROS 2", "Gazebo", "Nav2", "RTAB-Map"],
+      "links": { "github": "" },
+      "status": "complete",
+      "dates": "Sep 2024 – May 2026",
+      "specs": {
+        "Platform": "Rover",
+        "Role": "Team Lead → Project Lead",
+        "Org": "UB SpaceBulls"
+      }
+    },
+    {
+      "slug": "catan-agent",
+      "order": 6,
+      "name": "Catan Agent",
+      "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
+      "tags": ["RL", "GNN", "PPO", "Gymnasium"],
+      "links": {
+        "github": "",
+        "live": { "href": "/papers/catan-agent.pdf", "label": "Paper" }
+      },
+      "captions": {
+        "01-mean-return.png": "Mean return over the fine-tuning run: the agent keeps gaining as its opponents get stronger.",
+        "02-policy-entropy.png": "Policy entropy falling as the agent commits to a strategy instead of exploring.",
+        "03-losses-by-phase.png": "Policy and value-function loss across all eight curriculum phases."
+      },
+      "status": "complete",
+      "dates": "Spring 2026",
+      "specs": {
+        "Platform": "Simulation (Gymnasium)"
+      }
     }
   ],
+  "education": {
+    "degree": "B.S. Computer Science",
+    "minors": "Minor in Robotics and Math",
+    "school": "University at Buffalo",
+    "start": "2023-08",
+    "end": "2026-12"
+  },
   "experience": [
     {
-      "role": "Software Engineer",
-      "org": "Company Name",
-      "location": "Remote",
-      "start": "2023-06",
+      "role": "Undergraduate Researcher",
+      "org": "DRONESLab, University at Buffalo",
+      "location": "Buffalo, NY",
+      "start": "2026-06",
       "end": "Present",
       "bullets": [
-        "Shipped feature X that improved metric Y by Z%",
-        "Led migration from A to B"
+        "Extending the lab's published VISION infrastructure-inspection system for Boston Dynamics Spot with adaptive perception and defect detection that generalizes to new settings",
+        "Built Open-Spot's Spot Operator, an open-source full-stack teleoperation and control framework that the lab's ongoing research runs on"
+      ]
+    },
+    {
+      "role": "Technical Advisor",
+      "org": "NASA LunaBotics & UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2026-06",
+      "end": "Present",
+      "bullets": [
+        "Advise the incoming LunaBotics and SpaceBulls leads on navigation, SLAM and system architecture, keeping designs consistent between leadership changes"
+      ]
+    },
+    {
+      "role": "Undergraduate Student Assistant",
+      "org": "Digital Manufacturing Lab, University at Buffalo",
+      "location": "Buffalo, NY",
+      "start": "2026-05",
+      "end": "Present",
+      "bullets": [
+        "Maintain and repair a fleet of 3D printers (Prusa MK4/XL, Markforged Two, Formlabs resin), diagnosing hardware and material-jetting issues",
+        "Fulfill student and faculty work orders, advising on material selection and preparing CAD models so parts can be printed"
+      ]
+    },
+    {
+      "role": "Autonomy Lead",
+      "org": "NASA LunaBotics",
+      "location": "Buffalo, NY",
+      "start": "2025-09",
+      "end": "2026-05",
+      "bullets": [
+        "Built an autonomous navigation stack for a lunar rover on Jetson Orin, integrating RTAB-Map visual SLAM, Nav2 path planning, and EKF fusion of ZED2i stereo camera and odometry data",
+        "Fixed TF frame conflicts and wrote a custom recovery behavior tree so the rover could reliably localize and drive over unstructured terrain",
+        "Led the subteam's integration effort, taking the system from non-functional to competition-ready under a hard SAR deadline"
+      ]
+    },
+    {
+      "role": "Project Lead",
+      "org": "UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2025-09",
+      "end": "2026-05",
+      "bullets": [
+        "Led 15 engineers across 4 subteams, hitting key milestones 20% ahead of schedule"
+      ]
+    },
+    {
+      "role": "Team Lead",
+      "org": "UB SpaceBulls Robotics Club",
+      "location": "Buffalo, NY",
+      "start": "2024-09",
+      "end": "2025-05",
+      "bullets": [
+        "Led a 10-engineer subteam",
+        "Developed embedded systems software and a rover simulation prototype in ROS and Gazebo, cutting system latency by 30% and improving performance by 15%"
       ]
     }
   ],
   "contact": [
     { "label": "Email", "url": "mailto:travisminor10@gmail.com", "icon": "mail" },
     { "label": "GitHub", "url": "https://github.com/tmino1", "icon": "github" },
-    { "label": "LinkedIn", "url": "https://linkedin.com/in/tmino1", "icon": "linkedin" }
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/TravisMinor", "icon": "linkedin" }
   ]
 }
