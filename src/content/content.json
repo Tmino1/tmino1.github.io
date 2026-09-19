@@ -41,6 +41,26 @@
   ],
   "projects": [
     {
+      "slug": "vision-inspect",
+      "name": "VISION-Inspect",
+      "description": "Autonomous visual inspection of infrastructure with a quadruped robot — navigating to sites like culverts and drainage structures with an onboard sensor payload, validated against an RTK/GPS reference station for ground-truth positioning.",
+      "tags": ["Robotics", "Computer Vision"],
+      "image": "/projects/vision-inspect.jpg",
+      "links": {},
+      "featured": true
+    },
+    {
+      "slug": "fly-mhw",
+      "name": "fly-mhw",
+      "description": "Teaching a fruit-fly brain connectome to hunt in Monster Hunter World. A recurrent network built on the real Janelia MaleCNS wiring (topology and synapse sign fixed, only a small trainable surface of gains/biases/encoder/readout ever trained) drives a real game through reverse-engineered memory reads and a virtual gamepad — bootstrapped via imitation learning from recorded hunts, with RL fine-tuning next.",
+      "tags": ["Python", "PyTorch", "Lua", "Reinforcement Learning"],
+      "image": "/projects/fly-mhw.jpg",
+      "links": {
+        "source": "https://github.com/Tmino1/fly-mhw"
+      },
+      "featured": true
+    },
+    {
       "slug": "project-one",
       "name": "Project One",
       "description": "A short, punchy description of what this project does and why it's interesting.",
