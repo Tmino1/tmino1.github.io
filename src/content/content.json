@@ -11,10 +11,10 @@
   "about": {
     "heading": "About",
     "paragraphs": [
-      "I'm a Computer Science student at the University at Buffalo who builds software for robots that have to work outside the lab: navigation, SLAM, teleoperation and safety-critical control.",
-      "Right now I'm at DRONESLab, teaching Boston Dynamics' Spot to inspect infrastructure on its own. Before that, I led autonomy for UB's NASA LunaBotics rover."
+      "I'm a Computer Science student at the University at Buffalo. I write software for robots that have to work outside a lab: navigation, SLAM, teleoperation, and control systems that fail safely instead of catastrophically.",
+      "Right now I'm doing research at DRONESLab, working on autonomy for quadruped robots. Before that, I worked on rovers for two robotics clubs at UB — leading autonomy for the NASA LunaBotics rover, and leading the whole project for the SpaceBulls rover."
     ],
-    "looking": "I finish my B.S. in December 2026 and plan to continue into an M.S. in Engineering Sciences (Robotics) at UB. I'm looking for a summer 2027 robotics internship — navigation, SLAM and safety-critical control on robots that run outside the lab.",
+    "looking": "I finish my B.S. in December 2026, then I'm continuing at UB for an M.S. in Engineering Sciences (Robotics). I'm looking for a summer 2027 robotics internship — something in navigation, SLAM, or safety-critical control for robots that operate outside a lab.",
     "profile": {
       "Based in": "Buffalo, NY",
       "Studying": "B.S. Computer Science, University at Buffalo",
@@ -66,18 +66,17 @@
       "slug": "fly-mhw",
       "order": 7,
       "name": "Fly MHW",
-      "description": "An experiment in teaching a fruit fly's brain to play Monster Hunter World, with the long-term goal of beating Alatreon, one of its hardest monsters. The \"brain\" is a neural network built from the real wiring map of a fruit fly's brain, called its connectome: the connections stay fixed and only a small set of parameters around them gets trained. So far I've built the bridge between the network and the game: a Lua mod reads the player and monster state, a virtual gamepad sends inputs, and all eight actions have been verified in the live game.",
-      "tags": ["Python", "RL", "Connectome", "Lua", "Nix"],
+      "description": "An experiment in designing a neural network that can play Monster Hunter World against multiple monsters using multiple weapons. It uses mixture-of-experts layers so it can generalize across monsters and weapons, with the goal of learning to fight a new monster as quickly as possible. I plan to train it with a combination of imitation learning and reinforcement learning.",
+      "tags": ["Python", "RL", "IL", "MoE", "Lua", "Nix"],
       "links": { "github": "https://github.com/Tmino1/fly-mhw" },
       "captions": {
-        "architecture.svg": "The control loop: the fly-brain network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet.",
-        "gameplay.jpg": "A recorded frame mid-hunt: the connectome brain observes exactly this pixel feed, nothing else — no privileged game state, per Design Principle 4."
+        "architecture.svg": "The control loop: the network acts through a virtual gamepad, and a Lua mod reads the game's state back out. Dashed parts aren't built yet.",
+        "gameplay.jpg": "A recorded frame mid-hunt: the network observes exactly this pixel feed, nothing else — no privileged game state, per Design Principle 4."
       },
       "status": "prototype",
       "dates": "Sep 2026 – Present",
       "specs": {
         "Platform": "Monster Hunter World (PC)",
-        "Target": "Great Jagras, Great Sword",
         "Software": "LuaEngine, evdev virtual gamepad"
       }
     },
@@ -104,14 +103,14 @@
       "slug": "vision-inspect",
       "order": 2,
       "name": "VISION-Inspect",
-      "description": "VISION-Inspect sends Spot out to inspect infrastructure like culverts and look for damage. Instead of stopping to take pictures on a fixed schedule, the robot uses its sensors and an AI vision model to decide what's worth a closer look. I'm also testing whether the model can find defects in kinds of structures it has never seen before.",
+      "description": "VISION-Inspect is a DRONESLab project for autonomous culvert inspection. Rather than relying on a large labeled dataset of culvert defects, it leverages a vision-language model's generalization to navigate and inspect the culvert environment on its own, deciding what's worth a closer look instead of stopping to take pictures on a fixed schedule.",
       "tags": ["Python", "VLM", "LiDAR", "Nav2"],
       "links": {
         "github": "",
         "live": { "href": "https://droneslab.github.io/vision/", "label": "VISION v1" }
       },
       "captions": {
-        "01-culvert-inspection.jpg": "Spot approaching a culvert to inspect, with an RTK GPS base station staged nearby for ground-truth positioning."
+        "01-culvert-inspection.jpg": "Spot approaching a culvert to inspect, with a base station staged nearby for a network connection."
       },
       "status": "active",
       "dates": "Aug 2026 – Present",
@@ -125,7 +124,7 @@
       "slug": "open-spot-operator",
       "order": 1,
       "name": "Open-Spot: Spot Operator",
-      "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. It's designed to be safe first: if the connection drops or something crashes, the robot stops, and the emergency stop always works.",
+      "description": "Spot Operator lets a person drive and control Boston Dynamics' Spot robot dog from a handheld Steam Deck. It's part of open-spot, DRONESLab's open-source toolkit for Spot, and it's the base the lab builds its research on. Normally Spot's lease — the token that says who's allowed to control it — is held by whatever laptop is driving it, so a dropped connection makes Spot sit down defensively. That's fine in a lab, but in the field, sitting down wherever it happens to be can be dangerous. Spot Operator instead runs a daemon on an onboard Jetson that holds the lease locally, so a dropped connection to the operator doesn't force the robot down. The emergency stop still always works.",
       "tags": ["Godot 4", "Python", "Nix", "bosdyn-client"],
       "links": { "github": "https://droneslab.github.io/OpenSpot/" },
       "captions": {
@@ -184,7 +183,7 @@
       "slug": "catan-agent",
       "order": 6,
       "name": "Catan Agent",
-      "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
+      "description": "Catan Agent is an AI that taught itself to play Settlers of Catan through trial and error, combining a graph neural network with reinforcement learning. It reads the board as a graph of connected tiles and settlements, so it can play on any board layout, not just the one it trained on. During training its opponents got tougher as it started winning more, which helped it improve faster.",
       "tags": ["RL", "GNN", "PPO", "Gymnasium"],
       "links": {
         "github": "",
